@@ -1,0 +1,301 @@
+<meta charset="utf-8">
+<div class="container py-3" *ngIf="!banDire">
+    <div class="row">
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+            <div>
+                <h1 class="text-center mb-3"> <img src="./assets/logo.png"> Formulario Actualización de Información</h1>
+                <br>
+            </div>
+            <div class="col-md-12" >
+
+                <hr class="mb-4">
+
+                <div class="row justify-content-center">
+                    <div class="col-md-10 offset-md-1">
+                        <span class="anchor" id="formComplex"></span>
+                        <div class="card card-outline-secondary">
+                            <div class="card-header">
+                                <h3 class="mb-0">Ingrese la información requerida</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mt-12">
+                                    <!-- primer nombre -->
+                                    <div class="col-sm-6 pb-3 form-group">
+                                        <label for="exampleAccount" for="prinom"><b>Primer Nombre *</b></label>
+                                        <input class="form-control" id="exampleAccount" name="prinom"
+                                            placeholder="Primer Nombre" type="text" #prinom="ngModel"
+                                            [(ngModel)]="formulario.prinom" required pattern="[a-zA-Z]+">
+                                        <small *ngIf="!prinom.valid && prinom.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <!-- Segundo Nombre -->
+                                    <div class="col-sm-6 pb-3 form-group">
+                                        <label for="exampleAccount" for="segnom"><b>Segundo Nombre </b></label>
+                                        <input class="form-control" id="exampleAccount" name="segnom"
+                                            placeholder="Segundo Nombre" type="text" #segnom="ngModel"
+                                            [(ngModel)]="formulario.segnom" pattern="[a-zA-Z]+">
+                                        <small *ngIf="!segnom.valid && segnom.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                </div>
+                                <!-- Apellidos -->
+                                <div class="row mt-12">
+                                    <!-- primer apellido -->
+                                    <div class="col-sm-6 pb-3 form-group">
+                                        <label for="exampleAccount" for="priape"><b>Primer Apellido *</b></label>
+                                        <input class="form-control" id="exampleAccount" name="priape"
+                                            placeholder="Primer Nombre" type="text" #priape="ngModel"
+                                            [(ngModel)]="formulario.priape" required pattern="[a-zA-Z]+">
+                                        <small *ngIf="!priape.valid && priape.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <!-- Segundo apellido -->
+                                    <div class="col-sm-6 pb-3 form-group">
+                                        <label for="exampleAccount" for="segape"><b>Segundo Apellido </b></label>
+                                        <input class="form-control" id="exampleAccount" name="segape"
+                                            placeholder="Segundo Nombre" type="text" #segape="ngModel"
+                                            [(ngModel)]="formulario.segape" pattern="[a-zA-Z]+">
+                                        <small *ngIf="!segape.valid && segape.touched" class="invalid-feedback d-block">
+                                            El campos no es valido!
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row mt-12">
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="email"><b>Correo Electronico *</b></label>
+                                        <input class="form-control" id="exampleAccount" name="email"
+                                            placeholder="Correo Electronico" type="email" #email="ngModel"
+                                            [(ngModel)]="formulario.email" required
+                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                        <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+                                            Correo Invalido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="fecnac"><b>Fecha de Nacimiento *</b></label>
+                                        <input type="date" class="form-control" id="exampleAccount" name="fecnac"
+                                            value=today min="1940-01-01" max="2020-12-31"
+                                            placeholder="Fecha de Nacimiento" #fecnac="ngModel"
+                                            [(ngModel)]="formulario.fecnac" required>
+                                        <small *ngIf="!fecnac.valid && fecnac.touched" class="invalid-feedback d-block">
+                                            Dato Incorrecto!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="telefono"><b>Celular</b></label>
+                                        <input class="form-control" id="exampleAccount" name="telefono"
+                                            placeholder="Celular o Telefono" type="tel" #telefono="ngModel"
+                                            [(ngModel)]="formulario.telefono" required pattern="[0-9]{10}">
+                                        <small *ngIf="!telefono.valid && telefono.touched" class="invalid-feedback d-block">
+                                            Celular o Telefono Invalido!
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row mt-12">
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="diremp"><b>Dirección*</b></label>
+                                    </div>
+
+                                    <div class="col-sm-6 pb-3 form-group">
+                                        <div class="row">
+                                            <input class="form-control" id="exampleAccount" name="direccion"
+                                                placeholder="Dirección" type="text" #direccion="ngModel"
+                                                [(ngModel)]="formulario.direccion" class="form-control" id="exampleAccount"
+                                                value={{formulario.direccion}} disabled required>
+                                            <small *ngIf="!direccion.valid && direccion.touched"
+                                                class="invalid-feedback d-block">
+                                                Campo Incorrecto!
+                                            </small>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 pb-3 form-group">
+                                        <button type="button" class="btn btn-warning"
+                                            (click)="funcionDireccion()">Dirección</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="row mt-4">
+                                    <div class="float-right">
+                                        <div class="row mt-4">
+                                            <div class="col-sm-10 pb-3">
+                                                <input class="btn btn-success" type="submit" value="Enviar Información"
+                                                    [disabled]="registerForm.invalid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container py-3" *ngIf="banDire">
+    <div class="row">
+        <div class="col-md-12">
+
+            <hr class="mb-4">
+            <div class="row justify-content-center">
+                <div class="col-md-10 offset-md-1">
+                    <span class="anchor" id="formComplex"></span>
+                    <div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Dirección</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mt-12">
+                                <div class="col-sm-12 pb-3 form-group">
+                                    <span class="anchor" id="formComplex"></span>
+
+                                    <div class="card-body">
+                                        <div class="row mt-12">
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart1" [(ngModel)]="dirpart1" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart1 of menum_dirpart1"
+                                                        [value]="mpart1.value">{{mpart1.label}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart2" id="dirpart2" type="text" maxlength="25"
+                                                    data-length="25" (blur)="addDireccion()">
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart3" [(ngModel)]="dirpart3" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart3 of menum_dirpart3"
+                                                        [value]="mpart3.value">{{mpart3.label}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart4" [(ngModel)]="dirpart4" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart4 of menum_dirpart4"
+                                                        [value]="mpart4.value">{{mpart4.label}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-12">
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart5" [(ngModel)]="dirpart5" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart5 of menum_dirpart5"
+                                                        [value]="mpart5.value">{{mpart5.label}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart6" id="dirpart6" placeholder="No."
+                                                    type="text" OnlyNumber="true" maxlength="3" data-length="3"
+                                                    (blur)="addDireccion()">
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart7" [(ngModel)]="dirpart7" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart3 of menum_dirpart3"
+                                                        [value]="mpart3.value">{{mpart3.label}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart8" [(ngModel)]="dirpart8" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart4 of menum_dirpart4"
+                                                        [value]="mpart4.value">{{mpart4.label}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-12">
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart9" [(ngModel)]="dirpart9" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart5 of menum_dirpart5"
+                                                        [value]="mpart5.value">{{mpart5.label}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart10" id="dirpart10" type="text" maxlength="15"
+                                                    data-length="15" (blur)="addDireccion()">
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart11" [(ngModel)]="dirpart11" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart11 of menum_dirpart11"
+                                                        [value]="mpart11.value">{{mpart11.label}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart12" id="dirpart12" type="text" maxlength="3"
+                                                    data-length="3" (blur)="addDireccion()">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-12">
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart13" [(ngModel)]="dirpart13" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart13 of menum_dirpart13"
+                                                        [value]="mpart13.value">{{mpart13.label}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart14" id="dirpart14" type="text" maxlength="3"
+                                                    data-length="3" (blur)="addDireccion()">
+
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart15" [(ngModel)]="dirpart15" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart15 of menum_dirpart15"
+                                                        [value]="mpart15.value">{{mpart15.label}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart16" id="dirpart16" type="text" maxlength="60"
+                                                    data-length="60" (blur)="addDireccion()">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <br>
+                                <div class="col s1">
+                                    <b><span style="text-align: left; font-size: 18px;">Direccion:</span></b>
+                                </div>
+                                <div class="col s11" style="background-color:lightgray; font-size: 18px; color: red;"
+                                    id="div_direccion">
+                                </div>
+                                <div class="row mt-6">
+                                    <div class="float-right">
+                                        <div class="row mt-4">
+                                            <div class="col-sm-10 pb-3">
+                                                <input class="btn btn-success" type="submit" value="Confirmar Dirección"
+                                                    (click)="funcionDireccion2()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
