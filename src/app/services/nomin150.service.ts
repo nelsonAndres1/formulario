@@ -17,8 +17,8 @@ export class Nomin150Service {
 
 
     getGener18(user: any): Observable<any> {
-        let json = JSON.stringify(user);
-        let params = 'json=' + json;
+        //let json = JSON.stringify(user);
+        let params = 'json=';
         console.log("parametros!")
         console.log(params);
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -27,8 +27,8 @@ export class Nomin150Service {
     }
 
     getGener08(user: any): Observable<any> {
-        let json = JSON.stringify(user);
-        let params = 'json=' + json;
+        //let json = JSON.stringify(user);
+        let params = 'json=';
         console.log("parametros!")
         console.log(params);
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -37,8 +37,8 @@ export class Nomin150Service {
     }
 
     getGener14(user: any): Observable<any> {
-        let json = JSON.stringify(user);
-        let params = 'json=' + json;
+        //let json = JSON.stringify(user);
+        let params = 'json=';
         console.log("parametros!")
         console.log(params);
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -47,8 +47,8 @@ export class Nomin150Service {
     }
 
     getGener17(user: any): Observable<any> {
-        let json = JSON.stringify(user);
-        let params = 'json=' + json;
+        //let json = JSON.stringify(user);
+        let params = 'json=';
         console.log("parametros!")
         console.log(params);
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -57,8 +57,8 @@ export class Nomin150Service {
     }
 
     getGener15(user: any): Observable<any> {
-        let json = JSON.stringify(user);
-        let params = 'json=' + json;
+        //let json = JSON.stringify(user);
+        let params = 'json=';
         console.log("parametros!")
         console.log(params);
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -66,8 +66,8 @@ export class Nomin150Service {
 
     }
     getNomin200(user: any): Observable<any> {
-        let json = JSON.stringify(user);
-        let params = 'json=' + json;
+        //let json = JSON.stringify(user);
+        let params = 'json=';
         console.log("parametros!")
         console.log(params);
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -75,8 +75,8 @@ export class Nomin150Service {
 
     }
     getNomin216(user: any): Observable<any> {
-        let json = JSON.stringify(user);
-        let params = 'json=' + json;
+        //let json = JSON.stringify(user);
+        let params = 'json=';
         console.log("parametros!")
         console.log(params);
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
@@ -84,12 +84,12 @@ export class Nomin150Service {
 
     }
 
-    
 
-    
 
-    
 
-    
-    
+
+
+
+
+
 }
