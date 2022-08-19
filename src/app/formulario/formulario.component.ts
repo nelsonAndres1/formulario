@@ -3,11 +3,12 @@ import { Formulario } from '../models/formulario';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { FormularioService } from '../services/formulario.service';
 import { Router } from '@angular/router';
+import { Nomin150Service } from '../services/nomin150.service';
 @Component({
 	selector: 'app-formulario',
 	templateUrl: './formulario.component.html',
 	styleUrls: ['./formulario.component.css'],
-	providers: [FormularioService]
+	providers: [FormularioService, Nomin150Service]
 })
 export class FormularioComponent implements OnInit {
 	public formulario: Formulario;
@@ -160,8 +161,16 @@ export class FormularioComponent implements OnInit {
 		{ value: "ZN", label: "ZONA" },
 	];
 	datoDireccion: any;
-	constructor(private renderer: Renderer2, private _formulario: FormularioService, private route: Router) {
-		this.formulario = new Formulario('', '', '', '', '', '', '', '');
+	tipdoc: any;
+	tipciu: any;
+	tippai: any;
+	tipsex: any;
+	estado_civil: any;
+	raza: any;
+	cantidad=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+	profesiones: any;
+	constructor(private renderer: Renderer2, private _formulario: FormularioService,private _nomin150service: Nomin150Service, private route: Router) {
+		this.formulario = new Formulario('', '', '','', '', '', '', '', '','','','','','','','','','',0,0,'','','','');
 		this.datos = localStorage.getItem('usuarioConsultado');
 		this.datos = this.datos.replace(/ /g, "");
 		this.datos = JSON.parse(this.datos + '');
@@ -170,6 +179,61 @@ export class FormularioComponent implements OnInit {
 		this.formulario = this.datos;
 		this.datoDireccion=JSON.parse(localStorage.getItem('usuarioConsultado')+'');
 		this.formulario.direccion=this.datoDireccion.direccion;
+
+		//llamado tipos de documentos
+		this._nomin150service.getGener18(this.formulario).subscribe(
+			response=>{
+				this.tipdoc=response;
+			}
+		);
+
+		//llamado tipos de ciudades
+
+		this._nomin150service.getGener08(this.formulario).subscribe(
+			response=>{
+				this.tipciu=response;
+			}
+		);
+
+		//llamado a paises
+
+		this._nomin150service.getGener14(this.formulario).subscribe(
+			response=>{
+				this.tippai=response;
+			}
+		);
+
+		//llamado a sexo
+
+		this._nomin150service.getGener17(this.formulario).subscribe(
+			response=>{
+				this.tipsex=response;
+			}
+		);
+
+		//llamado a estado civil
+
+		this._nomin150service.getGener15(this.formulario).subscribe(
+			response=>{
+				this.estado_civil=response;
+			}
+		);
+
+		//llamado a raza
+
+		this._nomin150service.getNomin200(this.formulario).subscribe(
+			response=>{
+				this.raza=response;
+			}
+		);
+
+		//llamado profesiones
+
+		this._nomin150service.getNomin216(this.formulario).subscribe(
+			response=>{
+				this.profesiones=response;
+			}
+		)
 	}
 
 	ngOnInit(): void {

@@ -6,7 +6,7 @@
                 <h1 class="text-center mb-3"> <img src="./assets/logo.png"> Formulario Actualización de Información</h1>
                 <br>
             </div>
-            <div class="col-md-12" >
+            <div class="col-md-12">
 
                 <hr class="mb-4">
 
@@ -18,6 +18,53 @@
                                 <h3 class="mb-0">Ingrese la información requerida</h3>
                             </div>
                             <div class="card-body">
+                                <div class="row mt-12">
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="coddoc"><b>Tipo de Documento *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="coddoc"
+                                            placeholder="coddoc" for="coddoc" #coddoc="ngModel"
+                                            [(ngModel)]="formulario.coddoc" required>
+                                            <option *ngFor="let td of tipdoc" value={{td.coddoc}}>{{td.detdoc}}</option>
+                                        </select>
+                                        <small *ngIf="!coddoc.valid && coddoc.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="docemp"><b>Cedula *</b></label>
+                                        <input class="form-control" id="exampleAccount" name="docemp"
+                                            placeholder="Documento" type="text" #docemp="ngModel"
+                                            [(ngModel)]="formulario.docemp" disabled required>
+                                        <small *ngIf="!docemp.valid && docemp.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="fecexp"><b>Fecha de Expedición *</b></label>
+                                        <input type="date" class="form-control" id="exampleAccount" name="fecexp"
+                                            value=today min="1920-01-01" max="2020-12-31"
+                                            placeholder="Fecha de Expedición" #fecexp="ngModel"
+                                            [(ngModel)]="formulario.fecexp" required>
+                                        <small *ngIf="!fecexp.valid && fecexp.touched" class="invalid-feedback d-block">
+                                            Dato Incorrecto!
+                                        </small>
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="ciuexp"><b>Ciudad de Expedición *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="ciuexp"
+                                            placeholder="ciuexp" for="ciuexp" #ciuexp="ngModel"
+                                            [(ngModel)]="formulario.ciuexp" required>
+                                            <option *ngFor="let td of tipciu" value={{td.codciu}}>{{td.detciu}}</option>
+                                        </select>
+                                        <small *ngIf="!ciuexp.valid && ciuexp.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                </div>
                                 <div class="row mt-12">
                                     <!-- primer nombre -->
                                     <div class="col-sm-6 pb-3 form-group">
@@ -63,6 +110,58 @@
                                         </small>
                                     </div>
                                 </div>
+
+
+                                <div class="row mt-12">
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="fecnac"><b>Fecha de Nacimiento *</b></label>
+                                        <input type="date" class="form-control" id="exampleAccount" name="fecnac"
+                                            value=today min="1940-01-01" max="2020-12-31"
+                                            placeholder="Fecha de Nacimiento" #fecnac="ngModel"
+                                            [(ngModel)]="formulario.fecnac" required>
+                                        <small *ngIf="!fecnac.valid && fecnac.touched" class="invalid-feedback d-block">
+                                            Dato Incorrecto!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="ciunac"><b>Ciudad de Nacimiento</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="ciunac"
+                                            placeholder="ciunac" for="ciunac" #ciunac="ngModel"
+                                            [(ngModel)]="formulario.ciunac" required>
+                                            <option *ngFor="let td of tipciu" value={{td.codciu}}>{{td.detciu}}</option>
+                                        </select>
+                                        <small *ngIf="!ciunac.valid && ciunac.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+
+                                    </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="painac"><b>Pais de Nacimiento</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="painac"
+                                            placeholder="painac" for="painac" #painac="ngModel"
+                                            [(ngModel)]="formulario.painac" required>
+                                            <option *ngFor="let td of tippai" value={{td.codpai}}>{{td.detpai}}</option>
+                                        </select>
+                                        <small *ngIf="!painac.valid && painac.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="sexo"><b>Genero *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="sexo"
+                                            placeholder="sexo" for="sexo" #sexo="ngModel" [(ngModel)]="formulario.sexo"
+                                            required>
+                                            <option *ngFor="let td of tipsex" value={{td.codsex}}>{{td.detsex}}</option>
+                                        </select>
+                                        <small *ngIf="!sexo.valid && sexo.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                </div>
+
+
                                 <div class="row mt-12">
                                     <div class="col-sm-4 pb-3 form-group">
                                         <label for="exampleAccount" for="email"><b>Correo Electronico *</b></label>
@@ -75,36 +174,139 @@
                                         </small>
                                     </div>
                                     <div class="col-sm-4 pb-3 form-group">
-                                        <label for="exampleAccount" for="fecnac"><b>Fecha de Nacimiento *</b></label>
-                                        <input type="date" class="form-control" id="exampleAccount" name="fecnac"
-                                            value=today min="1940-01-01" max="2020-12-31"
-                                            placeholder="Fecha de Nacimiento" #fecnac="ngModel"
-                                            [(ngModel)]="formulario.fecnac" required>
-                                        <small *ngIf="!fecnac.valid && fecnac.touched" class="invalid-feedback d-block">
-                                            Dato Incorrecto!
+                                        <label for="exampleAccount" for="celular"><b>Celular</b></label>
+                                        <input class="form-control" id="exampleAccount" name="celular"
+                                            placeholder="Celular" type="tel" #celular="ngModel"
+                                            [(ngModel)]="formulario.celular" required pattern="[0-9]{10}">
+                                        <small *ngIf="!celular.valid && celular.touched"
+                                            class="invalid-feedback d-block">
+                                            Celular Invalido!
                                         </small>
                                     </div>
                                     <div class="col-sm-4 pb-3 form-group">
-                                        <label for="exampleAccount" for="telefono"><b>Celular</b></label>
+                                        <label for="exampleAccount" for="telefono"><b>Telefono</b></label>
                                         <input class="form-control" id="exampleAccount" name="telefono"
-                                            placeholder="Celular o Telefono" type="tel" #telefono="ngModel"
+                                            placeholder="Telefono" type="tel" #telefono="ngModel"
                                             [(ngModel)]="formulario.telefono" required pattern="[0-9]{10}">
-                                        <small *ngIf="!telefono.valid && telefono.touched" class="invalid-feedback d-block">
+                                        <small *ngIf="!telefono.valid && telefono.touched"
+                                            class="invalid-feedback d-block">
                                             Celular o Telefono Invalido!
                                         </small>
                                     </div>
+
                                 </div>
+
+                                <div class="row mt-12">
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="estciv"><b>Estado Civil *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="estciv"
+                                            placeholder="estciv" for="estciv" #estciv="ngModel"
+                                            [(ngModel)]="formulario.estciv" required>
+                                            <option *ngFor="let td of estado_civil" value={{td.estciv}}>{{td.detest}}
+                                            </option>
+                                        </select>
+                                        <small *ngIf="!estciv.valid && estciv.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="codraz"><b>Raza *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="codraz"
+                                            placeholder="codraz" for="codraz" #codraz="ngModel"
+                                            [(ngModel)]="formulario.codraz" required>
+                                            <option *ngFor="let td of raza" value={{td.codraz}}>{{td.detalle}}</option>
+                                        </select>
+                                        <small *ngIf="!codraz.valid && codraz.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="numhij"><b>Numero de hijos *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="numhij"
+                                            placeholder="numhij" for="numhij" #numhij="ngModel"
+                                            [(ngModel)]="formulario.numhij" required>
+                                            <option *ngFor="let td of cantidad" value={{td}}>{{td}}</option>
+                                        </select>
+                                        <small *ngIf="!numhij.valid && numhij.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="comfam"><b>Composición Familiar *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="comfam"
+                                            placeholder="comfam" for="comfam" #comfam="ngModel"
+                                            [(ngModel)]="formulario.comfam" required>
+                                            <option *ngFor="let td of cantidad" value={{td}}>{{td}}</option>
+                                        </select>
+                                        <small *ngIf="!comfam.valid && comfam.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row mt-12">
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="numlibmil"><b>Numero Libreta Militar</b></label>
+                                        <input class="form-control" id="exampleAccount" name="numlibmil"
+                                            placeholder="Numero Libreta Militar" type="text" #numlibmil="ngModel"
+                                            [(ngModel)]="formulario.numlibmil" pattern="[0-9]+">
+                                        <small *ngIf="!numlibmil.valid" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="clalibmil"><b>Clase Libreta Militar</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="clalibmil"
+                                            placeholder="Clase Libreta Militar" for="clalibmil" #clalibmil="ngModel"
+                                            [(ngModel)]="formulario.clalibmil">
+                                            <option value=1>PRIMERA</option>
+                                            <option value=2>SEGUNDA</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="dislibmil"><b>Distrito Militar</b></label>
+                                        <input class="form-control" id="exampleAccount" name="dislibmil"
+                                            placeholder="Numero Libreta Militar" type="text" #dislibmil="ngModel"
+                                            [(ngModel)]="formulario.dislibmil" pattern="[0-9]{2}">
+                                        <small *ngIf="!dislibmil.valid" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row mt-12">
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="codpro"><b>Profesión *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="codpro"
+                                            placeholder="Profesión" for="codpro" #codpro="ngModel"
+                                            [(ngModel)]="formulario.codpro" required>
+                                            <option *ngFor="let td of profesiones" value={{td.codpro}}>{{td.detalle}}</option>
+                                        </select>
+                                        <small *ngIf="!codpro.valid && codpro.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    
+                                </div>
+
+
+
                                 <div class="row mt-12">
                                     <div class="col-sm-3 pb-3 form-group">
                                         <label for="exampleAccount" for="diremp"><b>Dirección*</b></label>
                                     </div>
 
-                                    <div class="col-sm-6 pb-3 form-group">
+                                    <div class="col-sm-4 pb-3 form-group">
                                         <div class="row">
                                             <input class="form-control" id="exampleAccount" name="direccion"
                                                 placeholder="Dirección" type="text" #direccion="ngModel"
-                                                [(ngModel)]="formulario.direccion" class="form-control" id="exampleAccount"
-                                                value={{formulario.direccion}} disabled required>
+                                                [(ngModel)]="formulario.direccion" class="form-control"
+                                                id="exampleAccount" value={{formulario.direccion}} disabled required>
                                             <small *ngIf="!direccion.valid && direccion.touched"
                                                 class="invalid-feedback d-block">
                                                 Campo Incorrecto!
@@ -115,6 +317,10 @@
                                     <div class="col-sm-2 pb-3 form-group">
                                         <button type="button" class="btn btn-warning"
                                             (click)="funcionDireccion()">Dirección</button>
+                                    </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="telefono"><b>Barrio</b></label>
+
                                     </div>
                                 </div>
 

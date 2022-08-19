@@ -8,7 +8,23 @@ export class Formulario{
         public email: string,
         public fecnac: string,
         public telefono: string,
-        public direccion: string
+        public celular:string,
+        public direccion: string,
+        public coddoc: string,
+        public docemp: string,
+        public fecexp: string,
+        public ciuexp: string,
+        public ciunac: string,
+        public painac: string,
+        public sexo: string,
+        public estciv: string,
+        public codraz: string,
+        public numhij: number,
+        public comfam: number,
+        public numlibmil: string,
+        public clalibmil: string,
+        public dislibmil: string,
+        public codpro: string
         ){
     }
 }
