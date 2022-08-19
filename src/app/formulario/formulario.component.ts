@@ -191,6 +191,8 @@ export class FormularioComponent implements OnInit {
 
 		this._nomin150service.getGener08(this.formulario).subscribe(
 			response=>{
+				console.log("gener18");
+				console.log(response);
 				this.tipciu=response;
 			}
 		);
@@ -231,6 +233,7 @@ export class FormularioComponent implements OnInit {
 
 		this._nomin150service.getNomin216(this.formulario).subscribe(
 			response=>{
+				console.log("nomin216");
 				this.profesiones=response;
 			}
 		)
