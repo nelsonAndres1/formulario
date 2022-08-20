@@ -17,7 +17,6 @@ import {MatSelectModule} from '@angular/material/select';
 
 // Report viewer
 import '@boldreports/javascript-reporting-controls/Scripts/bold.report-viewer.min';
-import 'hammerjs';
 
 // data-visualization
 import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.bulletgraph.min';
