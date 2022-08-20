@@ -169,6 +169,7 @@ export class FormularioComponent implements OnInit {
 	raza: any;
 	cantidad=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 	profesiones: any;
+	dataG8: any;
 	constructor(private renderer: Renderer2, private _formulario: FormularioService,private _nomin150service: Nomin150Service, private route: Router) {
 		this.formulario = new Formulario('', '', '','', '', '', '', '', '','','','','','','','','','',0,0,'','','','');
 		this.datos = localStorage.getItem('usuarioConsultado');
@@ -241,6 +242,33 @@ export class FormularioComponent implements OnInit {
 
 	ngOnInit(): void {
 
+	}
+
+	getNomin16(pclave:any){
+		const keyword = pclave.target.value;
+		if(keyword.length>0){
+			const search = this._nomin150service.searchNomin216(keyword).then(response => {
+				this.dataG8 = response;
+				console.log(this.dataG8);
+			})
+		}else{
+			
+		}
+	}
+
+	getGener08(pclave:any){
+		const keyword = pclave.target.value;
+		if(keyword.length>0){
+			const search = this._nomin150service.searchgener08(keyword).then(response => {
+				this.data = response;
+				console.log(this.data);
+			})
+		}else{
+			
+		}
+	}
+	getDatosGener08(datosGener08){
+		this.formulario.ciuexp=datosGener08.ciuexp;
 	}
 
 	funcionDireccion() {

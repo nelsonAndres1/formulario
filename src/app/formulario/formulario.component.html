@@ -55,11 +55,21 @@
 
                                     <div class="col-sm-3 pb-3 form-group">
                                         <label for="exampleAccount" for="ciuexp"><b>Ciudad de Expedición *</b></label>
-                                        <select class="form-select col" id="inputGroupSelect01" name="ciuexp"
+                                        <input class="form-control" id="exampleAccount"
+                                            placeholder="Ciudad de Expedición" type="text" (input)="getGener08($event)"
+                                            name="ciuexp" for="ciuexp" #ciuexp="ngModel" [(ngModel)]="formulario.ciuexp"
+                                            required>
+                                        <div class="col-sm-12">
+                                            <div class="card card-body mb-1" *ngFor="let result of dataG8"
+                                                (click)="getDatosGener08(result)" style="cursor: pointer;">
+                                                <h4>result.detciu</h4>
+                                            </div>
+                                        </div>
+                                        <!-- <select class="form-select col" id="inputGroupSelect01" name="ciuexp"
                                             placeholder="ciuexp" for="ciuexp" #ciuexp="ngModel"
                                             [(ngModel)]="formulario.ciuexp" required>
                                             <option *ngFor="let td of tipciu" value={{td.codciu}}>{{td.detciu}}</option>
-                                        </select>
+                                        </select> -->
                                         <small *ngIf="!ciuexp.valid && ciuexp.touched" class="invalid-feedback d-block">
                                             El campo no es valido!
                                         </small>
@@ -252,7 +262,8 @@
 
                                 <div class="row mt-12">
                                     <div class="col-sm-4 pb-3 form-group">
-                                        <label for="exampleAccount" for="numlibmil"><b>Numero Libreta Militar</b></label>
+                                        <label for="exampleAccount" for="numlibmil"><b>Numero Libreta
+                                                Militar</b></label>
                                         <input class="form-control" id="exampleAccount" name="numlibmil"
                                             placeholder="Numero Libreta Militar" type="text" #numlibmil="ngModel"
                                             [(ngModel)]="formulario.numlibmil" pattern="[0-9]+">
@@ -285,13 +296,14 @@
                                         <select class="form-select col" id="inputGroupSelect01" name="codpro"
                                             placeholder="Profesión" for="codpro" #codpro="ngModel"
                                             [(ngModel)]="formulario.codpro" required>
-                                            <option *ngFor="let td of profesiones" value={{td.codpro}}>{{td.detalle}}</option>
+                                            <option *ngFor="let td of profesiones" value={{td.codpro}}>{{td.detalle}}
+                                            </option>
                                         </select>
                                         <small *ngIf="!codpro.valid && codpro.touched" class="invalid-feedback d-block">
                                             El campo no es valido!
                                         </small>
                                     </div>
-                                    
+
                                 </div>
 
 
