@@ -52,12 +52,12 @@
                                             Dato Incorrecto!
                                         </small>
                                     </div>
-
+                                    
                                     <div class="col-sm-3 pb-3 form-group">
                                         <label for="exampleAccount" for="nomciuexp"><b>Ciudad de Expedición *</b></label>
-                                        <input class="form-control" id="exampleAccount" placeholder="Nombre o Cedula"
-                                            type="text" (input)="getGener08($event)" name="nomciuexp" placeholder="Buscar..."
-                                            for="nomciuexp" #nomciuexp="ngModel" [(ngModel)]="formulario.nomciuexp" value={{formulario.nomciuexp}} required>
+                                        <input class="form-control" id="exampleAccount" type="text" (input)="getGener08($event)" 
+                                            name="nomciuexp" placeholder="Buscar..." for="nomciuexp" #nomciuexp="ngModel" 
+                                            [(ngModel)]="formulario.nomciuexp" value={{formulario.nomciuexp}} required>
                                         <div class="col-sm-12">
                                             <div class="card card-body mb-1" *ngFor="let result of data"
                                                 (click)="getDatosGener08(result)" style="cursor: pointer;">
@@ -141,24 +141,15 @@
                                         </small>
                                     </div>
                                     <div class="col-sm-3 pb-3 form-group">
-                                        <label for="exampleAccount" for="nomciunac"><b>Ciudad de Nacimiento</b></label>
-                                        <!-- <select class="form-select col" id="inputGroupSelect01" name="ciunac"
+                                        <label for="exampleAccount" for="ciunac"><b>Ciudad de Nacimiento</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="ciunac"
                                             placeholder="ciunac" for="ciunac" #ciunac="ngModel"
                                             [(ngModel)]="formulario.ciunac" required>
                                             <option *ngFor="let td of tipciu" value={{td.codciu}}>{{td.detciu}}</option>
-                                        </select> -->
-                                        <input class="form-control" id="exampleAccount" type="text" (input)="getGener08Na($event)" 
-                                            name="nomciunac" placeholder="Buscar..." for="nomciunac" #nomciunac="ngModel" 
-                                            [(ngModel)]="formulario.nomciunac" value={{formulario.nomciunac}} required>
-                                        <div class="col-sm-12">
-                                            <div class="card card-body mb-1" *ngFor="let result of dataNA"
-                                                (click)="getDatosGener08Na(result)" style="cursor: pointer;">
-                                                <h4>Ciudad: {{result.detciu}}</h4>
-                                            </div>
-                                            <small *ngIf="!nomciunac.valid && nomciunac.touched" class="invalid-feedback d-block">
-                                                El campo no es valido!
-                                            </small>
-                                        </div>
+                                        </select>
+                                        <small *ngIf="!ciunac.valid && ciunac.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
 
                                     </div>
                                     <div class="col-sm-3 pb-3 form-group">
