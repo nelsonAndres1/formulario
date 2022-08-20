@@ -168,75 +168,77 @@ export class FormularioComponent implements OnInit {
 	tipsex: any;
 	estado_civil: any;
 	raza: any;
-	cantidad=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+	cantidad = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 	profesiones: any;
 	dataG8: any;
-	constructor(private renderer: Renderer2, private _formulario: FormularioService,private _nomin150service: Nomin150Service, private route: Router) {
-		this.formulario = new Formulario('', '', '','', '', '', '', '', '','','','','','','','','','',0,0,'','','','');
+	dataNA:any;
+
+	constructor(private renderer: Renderer2, private _formulario: FormularioService, private _nomin150service: Nomin150Service, private route: Router) {
+		this.formulario = new Formulario('', '', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '');
 		this.datos = localStorage.getItem('usuarioConsultado');
 		this.datos = this.datos.replace(/ /g, "");
 		this.datos = JSON.parse(this.datos + '');
 		console.log("datos!");
 		console.log(this.datos);
 		this.formulario = this.datos;
-		this.datoDireccion=JSON.parse(localStorage.getItem('usuarioConsultado')+'');
-		this.formulario.direccion=this.datoDireccion.direccion;
+		this.datoDireccion = JSON.parse(localStorage.getItem('usuarioConsultado') + '');
+		this.formulario.direccion = this.datoDireccion.direccion;
 
 		//llamado tipos de documentos
 		this._nomin150service.getGener18(this.formulario).subscribe(
-			response=>{
-				this.tipdoc=response;
+			response => {
+				this.tipdoc = response;
 			}
 		);
 
 		//llamado tipos de ciudades
 
 		this._nomin150service.getGener08(this.formulario).subscribe(
-			response=>{
+			response => {
 				console.log("gener18");
 				console.log(response);
-				this.tipciu=response;
+				this.tipciu = response;
 			}
 		);
 
 		//llamado a paises
 
 		this._nomin150service.getGener14(this.formulario).subscribe(
-			response=>{
-				this.tippai=response;
+			response => {
+				this.tippai = response;
 			}
 		);
 
 		//llamado a sexo
 
 		this._nomin150service.getGener17(this.formulario).subscribe(
-			response=>{
-				this.tipsex=response;
+			response => {
+				this.tipsex = response;
 			}
 		);
 
 		//llamado a estado civil
 
 		this._nomin150service.getGener15(this.formulario).subscribe(
-			response=>{
-				this.estado_civil=response;
+			response => {
+				this.estado_civil = response;
 			}
 		);
 
 		//llamado a raza
 
 		this._nomin150service.getNomin200(this.formulario).subscribe(
-			response=>{
-				this.raza=response;
+			response => {
+				this.raza = response;
 			}
 		);
 
 		//llamado profesiones
 
 		this._nomin150service.getNomin216(this.formulario).subscribe(
-			response=>{
+			response => {
 				console.log("nomin216");
-				this.profesiones=response;
+				this.profesiones = response;
 			}
 		)
 	}
@@ -245,32 +247,53 @@ export class FormularioComponent implements OnInit {
 
 	}
 
-	getNomin16(pclave:any){
+	getNomin16(pclave: any) {
 		const keyword = pclave.target.value;
-		if(keyword.length>0){
+		if (keyword.length > 0) {
 			const search = this._nomin150service.searchNomin216(keyword).then(response => {
 				this.dataG8 = response;
 				console.log(this.dataG8);
 			})
-		}else{
-			
+		} else {
+
 		}
+	}
+	//Ciudad de expedición
+	getGener08(pclave: any) {
+
+		const keyword = pclave.target.value;
+		const search = this._nomin150service.searchGener08(keyword).then(response => {
+			this.data = response;
+			console.log(this.data);
+		})
+
+
+	}
+	//Ciudad de Nacimiento
+	getGener08Na(pclave: any) {
+
+		const keyword = pclave.target.value;
+		const search = this._nomin150service.searchGener08(keyword).then(response => {
+			this.dataNA = response;
+			console.log(this.dataNA);
+		})
+
+
 	}
 
-	getGener08(pclave:any){
-		const keyword = pclave.target.value;
-		if(keyword.length>0){
-			const search = this._nomin150service.searchgener08(keyword).then(response => {
-				this.data = response;
-				console.log(this.data);
-			})
-		}else{
-			
-		}
+	//Expedicón
+	getDatosGener08(datosGener08) {
+		this.formulario.ciuexp = datosGener08.codciu;
+		this.formulario.nomciuexp = datosGener08.detciu;
+		this.data = [];
 	}
-	getDatosGener08(datosGener08){
-		this.formulario.ciuexp=datosGener08.ciuexp;
+	//Nacimiento
+	getDatosGener08Na(datosGener08) {
+		this.formulario.ciunac = datosGener08.codciu;
+		this.formulario.nomciunac = datosGener08.detciu;
+		this.dataNA = [];
 	}
+	
 
 	funcionDireccion() {
 		this.banDire = true;

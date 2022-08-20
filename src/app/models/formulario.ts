@@ -14,7 +14,9 @@ export class Formulario{
         public docemp: string,
         public fecexp: string,
         public ciuexp: string,
+        public nomciuexp: string,//solo para nombre
         public ciunac: string,
+        public nomciunac: string,//solo para nombre
         public painac: string,
         public sexo: string,
         public estciv: string,
