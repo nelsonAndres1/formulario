@@ -10,10 +10,14 @@ import { ErrorComponent } from './error/error.component';
 import { BoldReportViewerModule } from '@boldreports/angular-reporting-components';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { MatLabel } from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
+
 // Report viewer
 import '@boldreports/javascript-reporting-controls/Scripts/bold.report-viewer.min';
-
+import 'hammerjs';
 
 // data-visualization
 import '@boldreports/javascript-reporting-controls/Scripts/data-visualization/ej.bulletgraph.min';
@@ -24,6 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { FormularioComponent } from './formulario/formulario.component';
 import { InicioFormularioComponent } from './inicio-formulario/inicio-formulario.component';
+
+
 
 
 @NgModule({
@@ -43,7 +49,9 @@ import { InicioFormularioComponent } from './inicio-formulario/inicio-formulario
     BoldReportViewerModule,
     BrowserAnimationsModule,
     ScrollingModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonModule, 
+    MatSelectModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }

@@ -11,6 +11,7 @@ import { Nomin150Service } from '../services/nomin150.service';
 	providers: [FormularioService, Nomin150Service]
 })
 export class FormularioComponent implements OnInit {
+	selected = 'option2';
 	public formulario: Formulario;
 	public forma!: FormGroup;
 	public banDire: any = false;
