@@ -171,7 +171,7 @@ export class FormularioComponent implements OnInit {
 	cantidad = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
 	profesiones: any;
 	dataG8: any;
-	dataNA:any;
+	dataNa: any;
 
 	constructor(private renderer: Renderer2, private _formulario: FormularioService, private _nomin150service: Nomin150Service, private route: Router) {
 		this.formulario = new Formulario('', '', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '');
@@ -262,7 +262,7 @@ export class FormularioComponent implements OnInit {
 	getGener08(pclave: any) {
 
 		const keyword = pclave.target.value;
-		const search = this._nomin150service.searchGener08(keyword).then(response => {
+		const search = this._nomin150service.searchgener08(keyword).then(response => {
 			this.data = response;
 			console.log(this.data);
 		})
@@ -273,25 +273,24 @@ export class FormularioComponent implements OnInit {
 	getGener08Na(pclave: any) {
 
 		const keyword = pclave.target.value;
-		const search = this._nomin150service.searchGener08(keyword).then(response => {
-			this.dataNA = response;
-			console.log(this.dataNA);
+		const search = this._nomin150service.searchgener08(keyword).then(response => {
+			this.dataNa = response;
+			console.log(this.dataNa);
 		})
 
 
 	}
 
-	//Expedicón
+
 	getDatosGener08(datosGener08) {
 		this.formulario.ciuexp = datosGener08.codciu;
 		this.formulario.nomciuexp = datosGener08.detciu;
 		this.data = [];
 	}
-	//Nacimiento
 	getDatosGener08Na(datosGener08) {
 		this.formulario.ciunac = datosGener08.codciu;
 		this.formulario.nomciunac = datosGener08.detciu;
-		this.dataNA = [];
+		this.dataNa = [];
 	}
 	
 
