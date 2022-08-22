@@ -1,0 +1,613 @@
+<meta charset="utf-8">
+<div class="container py-3" *ngIf="!banDire">
+    <div class="row">
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+            <div>
+                <h1 class="text-center mb-3"> <img src="./assets/logo.png"> Formulario Actualización de Información</h1>
+                <br>
+            </div>
+            <div class="col-md-12">
+
+                <hr class="mb-4">
+
+                <div class="row justify-content-center">
+                    <div class="col-md-10 offset-md-1">
+                        <span class="anchor" id="formComplex"></span>
+                        <div class="card card-outline-secondary">
+                            <div class="card-header">
+                                <h3 class="mb-0">Ingrese la información requerida</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mt-12">
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="coddoc"><b>Tipo de Documento *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="coddoc"
+                                            placeholder="coddoc" for="coddoc" #coddoc="ngModel"
+                                            [(ngModel)]="formulario.coddoc" required>
+                                            <option *ngFor="let td of tipdoc" value={{td.coddoc}}>{{td.detdoc}}</option>
+                                        </select>
+                                        <small *ngIf="!coddoc.valid && coddoc.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="docemp"><b>Cedula *</b></label>
+                                        <input class="form-control" id="exampleAccount" name="docemp"
+                                            placeholder="Documento" type="text" #docemp="ngModel"
+                                            [(ngModel)]="formulario.docemp" disabled required>
+                                        <small *ngIf="!docemp.valid && docemp.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="fecexp"><b>Fecha de Expedición *</b></label>
+                                        <input type="date" class="form-control" id="exampleAccount" name="fecexp"
+                                            value=today min="1920-01-01" max="2020-12-31"
+                                            placeholder="Fecha de Expedición" #fecexp="ngModel"
+                                            [(ngModel)]="formulario.fecexp" required>
+                                        <small *ngIf="!fecexp.valid && fecexp.touched" class="invalid-feedback d-block">
+                                            Dato Incorrecto!
+                                        </small>
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="nomciuexp"><b>Ciudad de Expedición
+                                                *</b></label>
+                                        <input class="form-control" id="exampleAccount" style="text-transform:uppercase;" type="text"
+                                            (input)="getGener08($event)" name="nomciuexp" placeholder="Buscar..."
+                                            for="nomciuexp" #nomciuexp="ngModel" [(ngModel)]="formulario.nomciuexp"
+                                            value={{formulario.nomciuexp}} required>
+                                        <div class="col-sm-12">
+                                            <div class="card card-body mb-1" *ngFor="let result of data"
+                                                (click)="getDatosGener08(result)" style="cursor: pointer;">
+                                                <h4>Ciudad: {{result.detciu}}</h4>
+                                            </div>
+                                            <small *ngIf="!nomciuexp.valid && nomciuexp.touched"
+                                                class="invalid-feedback d-block">
+                                                El campo no es valido!
+                                            </small>
+                                        </div>
+
+                                        <!--                                         <mat-form-field appearance="fill">
+                                            <label for="exampleAccount" for="ciuexp"><b>Ciudad de Expedición
+                                                    *</b></label>
+                                            <mat-select [(value)]="selected" name="ciuexp" placeholder="ciuexp"
+                                                for="ciuexp" #ciuexp="ngModel" [(ngModel)]="formulario.ciuexp" required>
+                                                <mat-option *ngFor="let td of tipciu" value={{td.codciu}}>{{td.detciu}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <small *ngIf="!ciuexp.valid && ciuexp.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small> -->
+                                    </div>
+                                </div>
+                                <div class="row mt-12">
+                                    <!-- primer nombre -->
+                                    <div class="col-sm-6 pb-3 form-group">
+                                        <label for="exampleAccount" for="prinom"><b>Primer Nombre *</b></label>
+                                        <input class="form-control" id="exampleAccount" name="prinom"
+                                            placeholder="Primer Nombre" type="text" #prinom="ngModel"
+                                            [(ngModel)]="formulario.prinom" required pattern="[a-zA-Z]+">
+                                        <small *ngIf="!prinom.valid && prinom.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <!-- Segundo Nombre -->
+                                    <div class="col-sm-6 pb-3 form-group">
+                                        <label for="exampleAccount" for="segnom"><b>Segundo Nombre </b></label>
+                                        <input class="form-control" id="exampleAccount" name="segnom"
+                                            placeholder="Segundo Nombre" type="text" #segnom="ngModel"
+                                            [(ngModel)]="formulario.segnom" pattern="[a-zA-Z]+">
+                                        <small *ngIf="!segnom.valid && segnom.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                </div>
+                                <!-- Apellidos -->
+                                <div class="row mt-12">
+                                    <!-- primer apellido -->
+                                    <div class="col-sm-6 pb-3 form-group">
+                                        <label for="exampleAccount" for="priape"><b>Primer Apellido *</b></label>
+                                        <input class="form-control" id="exampleAccount" name="priape"
+                                            placeholder="Primer Nombre" type="text" #priape="ngModel"
+                                            [(ngModel)]="formulario.priape" required pattern="[a-zA-Z]+">
+                                        <small *ngIf="!priape.valid && priape.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <!-- Segundo apellido -->
+                                    <div class="col-sm-6 pb-3 form-group">
+                                        <label for="exampleAccount" for="segape"><b>Segundo Apellido </b></label>
+                                        <input class="form-control" id="exampleAccount" name="segape"
+                                            placeholder="Segundo Nombre" type="text" #segape="ngModel"
+                                            [(ngModel)]="formulario.segape" pattern="[a-zA-Z]+">
+                                        <small *ngIf="!segape.valid && segape.touched" class="invalid-feedback d-block">
+                                            El campos no es valido!
+                                        </small>
+                                    </div>
+                                </div>
+
+
+                                <div class="row mt-12">
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="fecnac"><b>Fecha de Nacimiento *</b></label>
+                                        <input type="date" class="form-control" id="exampleAccount" name="fecnac"
+                                            value=today min="1940-01-01" max="2020-12-31"
+                                            placeholder="Fecha de Nacimiento" #fecnac="ngModel"
+                                            [(ngModel)]="formulario.fecnac" required>
+                                        <small *ngIf="!fecnac.valid && fecnac.touched" class="invalid-feedback d-block">
+                                            Dato Incorrecto!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="nomciunac"><b>Ciudad de Nacimiento</b></label>
+                                        <input class="form-control" id="exampleAccount" type="text"
+                                            (input)="getGener08Na($event)" style="text-transform:uppercase;" name="nomciunac" placeholder="Buscar..."
+                                            for="nomciunac" #nomciunac="ngModel" [(ngModel)]="formulario.nomciunac"
+                                            value={{formulario.nomciunac}} required>
+                                        <div class="col-sm-12">
+                                            <div class="card card-body mb-1" *ngFor="let result of dataNa"
+                                                (click)="getDatosGener08Na(result)" style="cursor: pointer;">
+                                                <h4>Ciudad: {{result.detciu}}</h4>
+                                            </div>
+                                            <small *ngIf="!nomciunac.valid && nomciunac.touched"
+                                                class="invalid-feedback d-block">
+                                                El campo no es valido!
+                                            </small>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="painac"><b>Pais de Nacimiento</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="painac"
+                                            placeholder="painac" for="painac" #painac="ngModel"
+                                            [(ngModel)]="formulario.painac" required>
+                                            <option *ngFor="let td of tippai" value={{td.codpai}}>{{td.detpai}}</option>
+                                        </select>
+                                        <small *ngIf="!painac.valid && painac.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="sexo"><b>Genero *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="sexo"
+                                            placeholder="sexo" for="sexo" #sexo="ngModel" [(ngModel)]="formulario.sexo"
+                                            required>
+                                            <option *ngFor="let td of tipsex" value={{td.codsex}}>{{td.detsex}}</option>
+                                        </select>
+                                        <small *ngIf="!sexo.valid && sexo.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                </div>
+
+
+                                <div class="row mt-12">
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="email"><b>Correo Electronico *</b></label>
+                                        <input class="form-control" id="exampleAccount" name="email"
+                                            placeholder="Correo Electronico" type="email" #email="ngModel"
+                                            [(ngModel)]="formulario.email" required
+                                            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$">
+                                        <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
+                                            Correo Invalido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="celular"><b>Celular</b></label>
+                                        <input class="form-control" id="exampleAccount" name="celular"
+                                            placeholder="Celular" type="tel" #celular="ngModel"
+                                            [(ngModel)]="formulario.celular" required pattern="[0-9]{10}">
+                                        <small *ngIf="!celular.valid && celular.touched"
+                                            class="invalid-feedback d-block">
+                                            Celular Invalido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="telefono"><b>Telefono</b></label>
+                                        <input class="form-control" id="exampleAccount" name="telefono"
+                                            placeholder="Telefono" type="tel" #telefono="ngModel"
+                                            [(ngModel)]="formulario.telefono" required pattern="[0-9]{10}">
+                                        <small *ngIf="!telefono.valid && telefono.touched"
+                                            class="invalid-feedback d-block">
+                                            Celular o Telefono Invalido!
+                                        </small>
+                                    </div>
+
+                                </div>
+
+                                <div class="row mt-12">
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="estciv"><b>Estado Civil *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="estciv"
+                                            placeholder="estciv" for="estciv" #estciv="ngModel"
+                                            [(ngModel)]="formulario.estciv" required>
+                                            <option *ngFor="let td of estado_civil" value={{td.estciv}}>{{td.detest}}
+                                            </option>
+                                        </select>
+                                        <small *ngIf="!estciv.valid && estciv.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="codraz"><b>Raza *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="codraz"
+                                            placeholder="codraz" for="codraz" #codraz="ngModel"
+                                            [(ngModel)]="formulario.codraz" required>
+                                            <option *ngFor="let td of raza" value={{td.codraz}}>{{td.detalle}}</option>
+                                        </select>
+                                        <small *ngIf="!codraz.valid && codraz.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="numhij"><b>Numero de hijos *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="numhij"
+                                            placeholder="numhij" for="numhij" #numhij="ngModel"
+                                            [(ngModel)]="formulario.numhij" required>
+                                            <option *ngFor="let td of cantidad" value={{td}}>{{td}}</option>
+                                        </select>
+                                        <small *ngIf="!numhij.valid && numhij.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="comfam"><b>Composición Familiar *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="comfam"
+                                            placeholder="comfam" for="comfam" #comfam="ngModel"
+                                            [(ngModel)]="formulario.comfam" required>
+                                            <option *ngFor="let td of cantidad" value={{td}}>{{td}}</option>
+                                        </select>
+                                        <small *ngIf="!comfam.valid && comfam.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row mt-12">
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="numlibmil"><b>Numero Libreta
+                                                Militar</b></label>
+                                        <input class="form-control" id="exampleAccount" name="numlibmil"
+                                            placeholder="Numero Libreta Militar" type="text" #numlibmil="ngModel"
+                                            [(ngModel)]="formulario.numlibmil" pattern="[0-9]+">
+                                        <small *ngIf="!numlibmil.valid" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="clalibmil"><b>Clase Libreta Militar</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="clalibmil"
+                                            placeholder="Clase Libreta Militar" for="clalibmil" #clalibmil="ngModel"
+                                            [(ngModel)]="formulario.clalibmil">
+                                            <option value=1>PRIMERA</option>
+                                            <option value=2>SEGUNDA</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="dislibmil"><b>Distrito Militar</b></label>
+                                        <input class="form-control" id="exampleAccount" name="dislibmil"
+                                            placeholder="Distrito Militar" type="text" #dislibmil="ngModel"
+                                            [(ngModel)]="formulario.dislibmil" pattern="[0-9]{2}">
+                                        <small *ngIf="!dislibmil.valid" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="row mt-12">
+         
+                                    <div class="col-sm-3 pb-3 form-group">
+
+                                        <label for="exampleAccount" for="nompro"><b>Profesión</b></label>
+                                        <input class="form-control" id="exampleAccount" type="text"
+                                            (input)="getNomin16($event)" name="nompro" placeholder="Buscar..."
+                                            for="nompro" #nompro="ngModel" [(ngModel)]="formulario.nompro"
+                                            value={{formulario.nompro}} required>
+                                        <div class="col-sm-12">
+                                             <div class="card card-body mb-1" *ngFor="let result of data216"
+                                                (click)="getDatosGener216(result)" style="cursor: pointer;">
+                                                <h4>Profesión: {{result.detalle}}</h4>
+                                            </div>
+                                            <small *ngIf="!nompro.valid && nompro.touched"
+                                                class="invalid-feedback d-block">
+                                                El campo no es valido!
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="grusan"><b>Grupo Sanguineo *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="grusan"
+                                            placeholder="grusan" for="grusan" #grusan="ngModel"
+                                            [(ngModel)]="formulario.grusan" required>
+                                            <option *ngFor="let td of grupoSanguineo" value={{td.codgru}}>{{td.detgru}}</option>
+                                        </select>
+                                        <small *ngIf="!grusan.valid && grusan.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="tipviv"><b>Tipo de Vivienda *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="tipviv"
+                                            placeholder="tipviv" for="grusan" #tipviv="ngModel"
+                                            [(ngModel)]="formulario.tipviv" required>
+                                            <option value='3'>FAMILIAR</option>
+                                            <option value='2'>ARRENDADA</option>
+                                            <option value='1'>PROPIA</option>
+                                        </select>
+                                        <small *ngIf="!tipviv.valid && tipviv.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="estrato"><b>Estrato *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="estrato"
+                                            placeholder="estrato" for="estrato" #estrato="ngModel"
+                                            [(ngModel)]="formulario.estrato" required>
+                                            <option *ngFor="let td of menum_estrato" value={{td.value}}>{{td.label}}</option>
+                                            
+                                        </select>
+                                        <small *ngIf="!estrato.valid && estrato.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
+                                </div>
+                                <div class="row mt-12">
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="paires"><b>Pais de Residencia*</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="paires"
+                                            placeholder="paires" for="paires" #paires="ngModel"
+                                            [(ngModel)]="formulario.paires" required>
+                                            <option *ngFor="let td of tippai" value={{td.codpai}}>{{td.detpai}}</option>
+                                        </select>
+                                        <small *ngIf="!painac.valid && painac.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="nomciures"><b>Ciudad de Residencia*</b></label>
+
+                                        <input class="form-control" id="exampleAccount" type="text"
+                                            (input)="getGener08Re($event)" style="text-transform:uppercase;" name="nomciures" placeholder="Buscar..."
+                                            for="nomciures" #nomciures="ngModel" [(ngModel)]="formulario.nomciures"
+                                            value={{formulario.nomciures}} required>
+                                        <div class="col-sm-12">
+                                            <div class="card card-body mb-1" *ngFor="let result of dataRe"
+                                                (click)="getDatosGener08Re(result)" style="cursor: pointer;">
+                                                <h4>Ciudad: {{result.detciu}}</h4>
+                                            </div>
+                                            <small *ngIf="!nomciures.valid && nomciures.touched"
+                                                class="invalid-feedback d-block">
+                                                El campo no es valido!
+                                            </small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="diremp"><b>Barrio*</b></label>
+
+                                    </div>
+                                    
+
+                                </div>
+
+
+
+                                <div class="row mt-12">
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="diremp"><b>Dirección*</b></label>
+                                    </div>
+
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <div class="row">
+                                            <input class="form-control" id="exampleAccount" name="direccion"
+                                                placeholder="Dirección" type="text" #direccion="ngModel"
+                                                [(ngModel)]="formulario.direccion" class="form-control"
+                                                id="exampleAccount" value={{formulario.direccion}} disabled required>
+                                            <small *ngIf="!direccion.valid && direccion.touched"
+                                                class="invalid-feedback d-block">
+                                                Campo Incorrecto!
+                                            </small>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2 pb-3 form-group">
+                                        <button type="button" class="btn btn-warning"
+                                            (click)="funcionDireccion()">Dirección</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="row mt-4">
+                                    <div class="float-right">
+                                        <div class="row mt-4">
+                                            <div class="col-sm-10 pb-3">
+                                                <input class="btn btn-success" type="submit" value="Enviar Información"
+                                                    [disabled]="registerForm.invalid">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container py-3" *ngIf="banDire">
+    <div class="row">
+        <div class="col-md-12">
+
+            <hr class="mb-4">
+            <div class="row justify-content-center">
+                <div class="col-md-10 offset-md-1">
+                    <span class="anchor" id="formComplex"></span>
+                    <div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Dirección</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="row mt-12">
+                                <div class="col-sm-12 pb-3 form-group">
+                                    <span class="anchor" id="formComplex"></span>
+
+                                    <div class="card-body">
+                                        <div class="row mt-12">
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart1" [(ngModel)]="dirpart1" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart1 of menum_dirpart1"
+                                                        [value]="mpart1.value">{{mpart1.label}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart2" id="dirpart2" type="text" maxlength="25"
+                                                    data-length="25" (blur)="addDireccion()">
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart3" [(ngModel)]="dirpart3" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart3 of menum_dirpart3"
+                                                        [value]="mpart3.value">{{mpart3.label}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart4" [(ngModel)]="dirpart4" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart4 of menum_dirpart4"
+                                                        [value]="mpart4.value">{{mpart4.label}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-12">
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart5" [(ngModel)]="dirpart5" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart5 of menum_dirpart5"
+                                                        [value]="mpart5.value">{{mpart5.label}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart6" id="dirpart6" placeholder="No."
+                                                    type="text" OnlyNumber="true" maxlength="3" data-length="3"
+                                                    (blur)="addDireccion()">
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart7" [(ngModel)]="dirpart7" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart3 of menum_dirpart3"
+                                                        [value]="mpart3.value">{{mpart3.label}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart8" [(ngModel)]="dirpart8" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart4 of menum_dirpart4"
+                                                        [value]="mpart4.value">{{mpart4.label}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-12">
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart9" [(ngModel)]="dirpart9" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart5 of menum_dirpart5"
+                                                        [value]="mpart5.value">{{mpart5.label}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart10" id="dirpart10" type="text" maxlength="15"
+                                                    data-length="15" (blur)="addDireccion()">
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart11" [(ngModel)]="dirpart11" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart11 of menum_dirpart11"
+                                                        [value]="mpart11.value">{{mpart11.label}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart12" id="dirpart12" type="text" maxlength="3"
+                                                    data-length="3" (blur)="addDireccion()">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-12">
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart13" [(ngModel)]="dirpart13" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart13 of menum_dirpart13"
+                                                        [value]="mpart13.value">{{mpart13.label}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart14" id="dirpart14" type="text" maxlength="3"
+                                                    data-length="3" (blur)="addDireccion()">
+
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <select id="dirpart15" [(ngModel)]="dirpart15" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart15 of menum_dirpart15"
+                                                        [value]="mpart15.value">{{mpart15.label}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-3 pb-3 form-group">
+                                                <input [(ngModel)]="dirpart16" id="dirpart16" type="text" maxlength="60"
+                                                    data-length="60" (blur)="addDireccion()">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <br>
+                                <div class="col s1">
+                                    <b><span style="text-align: left; font-size: 18px;">Direccion:</span></b>
+                                </div>
+                                <div class="col s11" style="background-color:lightgray; font-size: 18px; color: red;"
+                                    id="div_direccion">
+                                </div>
+                                <div class="row mt-6">
+                                    <div class="float-right">
+                                        <div class="row mt-4">
+                                            <div class="col-sm-10 pb-3">
+                                                <input class="btn btn-success" type="submit" value="Confirmar Dirección"
+                                                    (click)="funcionDireccion2()">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
