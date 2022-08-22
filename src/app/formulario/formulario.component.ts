@@ -306,8 +306,8 @@ export class FormularioComponent implements OnInit {
 
 		const keyword = pclave.target.value;
 		const search = this._nomin150service.searchgener08(keyword).then(response => {
-			this.dataRe = response;
-			console.log(this.dataRe);
+			this.dataNa = response;
+			console.log(this.dataNa);
 		})
 
 
