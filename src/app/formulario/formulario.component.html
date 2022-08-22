@@ -56,7 +56,7 @@
                                     <div class="col-sm-3 pb-3 form-group">
                                         <label for="exampleAccount" for="nomciuexp"><b>Ciudad de Expedición
                                                 *</b></label>
-                                        <input class="form-control" id="exampleAccount" type="text"
+                                        <input class="form-control" id="exampleAccount" style="text-transform:uppercase;" type="text"
                                             (input)="getGener08($event)" name="nomciuexp" placeholder="Buscar..."
                                             for="nomciuexp" #nomciuexp="ngModel" [(ngModel)]="formulario.nomciuexp"
                                             value={{formulario.nomciuexp}} required>
@@ -146,7 +146,7 @@
                                     <div class="col-sm-3 pb-3 form-group">
                                         <label for="exampleAccount" for="nomciunac"><b>Ciudad de Nacimiento</b></label>
                                         <input class="form-control" id="exampleAccount" type="text"
-                                            (input)="getGener08Na($event)" name="nomciunac" placeholder="Buscar..."
+                                            (input)="getGener08Na($event)" style="text-transform:uppercase;" name="nomciunac" placeholder="Buscar..."
                                             for="nomciunac" #nomciunac="ngModel" [(ngModel)]="formulario.nomciunac"
                                             value={{formulario.nomciunac}} required>
                                         <div class="col-sm-12">
@@ -195,7 +195,7 @@
                                         <input class="form-control" id="exampleAccount" name="email"
                                             placeholder="Correo Electronico" type="email" #email="ngModel"
                                             [(ngModel)]="formulario.email" required
-                                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                            pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$">
                                         <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
                                             Correo Invalido!
                                         </small>
@@ -300,7 +300,7 @@
                                     <div class="col-sm-4 pb-3 form-group">
                                         <label for="exampleAccount" for="dislibmil"><b>Distrito Militar</b></label>
                                         <input class="form-control" id="exampleAccount" name="dislibmil"
-                                            placeholder="Numero Libreta Militar" type="text" #dislibmil="ngModel"
+                                            placeholder="Distrito Militar" type="text" #dislibmil="ngModel"
                                             [(ngModel)]="formulario.dislibmil" pattern="[0-9]{2}">
                                         <small *ngIf="!dislibmil.valid" class="invalid-feedback d-block">
                                             El campo no es valido!
@@ -365,6 +365,44 @@
                                     </div>
 
                                 </div>
+                                <div class="row mt-12">
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="paires"><b>Pais de Residencia*</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="paires"
+                                            placeholder="paires" for="paires" #paires="ngModel"
+                                            [(ngModel)]="formulario.paires" required>
+                                            <option *ngFor="let td of tippai" value={{td.codpai}}>{{td.detpai}}</option>
+                                        </select>
+                                        <small *ngIf="!painac.valid && painac.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="nomciures"><b>Ciudad de Residencia*</b></label>
+
+                                        <input class="form-control" id="exampleAccount" type="text"
+                                            (input)="getGener08Na($event)" style="text-transform:uppercase;" name="nomciures" placeholder="Buscar..."
+                                            for="nomciures" #nomciures="ngModel" [(ngModel)]="formulario.nomciures"
+                                            value={{formulario.nomciures}} required>
+                                        <div class="col-sm-12">
+                                            <div class="card card-body mb-1" *ngFor="let result of dataRe"
+                                                (click)="getDatosGener08Re(result)" style="cursor: pointer;">
+                                                <h4>Ciudad: {{result.detciu}}</h4>
+                                            </div>
+                                            <small *ngIf="!nomciures.valid && nomciures.touched"
+                                                class="invalid-feedback d-block">
+                                                El campo no es valido!
+                                            </small>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-4 pb-3 form-group">
+                                        <label for="exampleAccount" for="diremp"><b>Barrio*</b></label>
+
+                                    </div>
+                                    
+
+                                </div>
 
 
 
@@ -389,10 +427,6 @@
                                     <div class="col-sm-2 pb-3 form-group">
                                         <button type="button" class="btn btn-warning"
                                             (click)="funcionDireccion()">Dirección</button>
-                                    </div>
-                                    <div class="col-sm-3 pb-3 form-group">
-                                        <label for="exampleAccount" for="telefono"><b>Barrio</b></label>
-
                                     </div>
                                 </div>
 

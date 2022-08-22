@@ -1,14 +1,14 @@
-export class Formulario{
-   
+export class Formulario {
+
     constructor(
         public prinom: string,
         public segnom: string,
-        public priape: string, 
+        public priape: string,
         public segape: string,
         public email: string,
         public fecnac: string,
         public telefono: string,
-        public celular:string,
+        public celular: string,
         public direccion: string,
         public coddoc: string,
         public docemp: string,
@@ -30,8 +30,11 @@ export class Formulario{
         public nompro: string,//nombre de la profesion
         public grusan: string,
         public tipviv: string,
-        public estrato: string
-        ){
+        public estrato: string,
+        public paires: string,
+        public ciures: string,
+        public nomciures: string,//solo para nombre
+    ) {
     }
 }
 

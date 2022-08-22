@@ -189,11 +189,12 @@ export class FormularioComponent implements OnInit {
 	profesiones: any;
 	dataG8: any;
 	dataNa: any;
+	dataRe: any;
 	data216: any;
 	grupoSanguineo: any;
 
 	constructor(private renderer: Renderer2, private _formulario: FormularioService, private _nomin150service: Nomin150Service, private route: Router) {
-		this.formulario = new Formulario('', '', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '','','','','');
+		this.formulario = new Formulario('', '', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '','','','','','','','');
 		this.datos = localStorage.getItem('usuarioConsultado');
 		this.datos = this.datos.replace(/ /g, "");
 		this.datos = JSON.parse(this.datos + '');
@@ -305,12 +306,24 @@ export class FormularioComponent implements OnInit {
 
 		const keyword = pclave.target.value;
 		const search = this._nomin150service.searchgener08(keyword).then(response => {
-			this.dataNa = response;
-			console.log(this.dataNa);
+			this.dataRe = response;
+			console.log(this.dataRe);
 		})
 
 
 	}
+
+	getGener08Re(pclave: any) {
+
+		const keyword = pclave.target.value;
+		const search = this._nomin150service.searchgener08(keyword).then(response => {
+			this.dataRe = response;
+			console.log(this.dataRe);
+		})
+
+
+	}
+
 	getDatosGener216(datosGener08) {
 		this.formulario.codpro = datosGener08.codpro;
 		this.formulario.nompro = datosGener08.detalle;
@@ -326,6 +339,12 @@ export class FormularioComponent implements OnInit {
 		this.formulario.ciunac = datosGener08.codciu;
 		this.formulario.nomciunac = datosGener08.detciu;
 		this.dataNa = [];
+	}
+
+	getDatosGener08Re(datosGener08) {
+		this.formulario.ciures = datosGener08.codciu;
+		this.formulario.nomciures = datosGener08.detciu;
+		this.dataRe = [];
 	}
 	
 
