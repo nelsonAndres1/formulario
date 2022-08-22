@@ -159,7 +159,7 @@
                                                 El campo no es valido!
                                             </small>
                                         </div>
-                                        
+
 
                                     </div>
                                     <div class="col-sm-3 pb-3 form-group">
@@ -308,33 +308,62 @@
                                     </div>
                                 </div>
                                 <div class="row mt-12">
-                                    <!--  <div class="col-sm-4 pb-3 form-group">
-                                        <label for="exampleAccount" for="codpro"><b>Profesión *</b></label>
-                                        <select class="form-select col" id="inputGroupSelect01" name="codpro"
-                                            placeholder="Profesión" for="codpro" #codpro="ngModel"
-                                            [(ngModel)]="formulario.codpro" required>
-                                            <option *ngFor="let td of profesiones" value={{td.codpro}}>{{td.detalle}}
-                                            </option>
-                                        </select>
-                                        <small *ngIf="!codpro.valid && codpro.touched" class="invalid-feedback d-block">
-                                            El campo no es valido!
-                                        </small>
-                                    </div> -->
-                                    <div class="col-sm-4 pb-3 form-group">
-                                        <mat-form-field appearance="fill">
-                                            <label for="exampleAccount" for="codpro"><b>Profesión</b></label>
-                                            <mat-select [(value)]="selected" name="codpro" placeholder="codpro"
-                                                for="codpro" #codpro="ngModel" [(ngModel)]="formulario.codpro" required>
-                                                <mat-option *ngFor="let dt of profesiones" value={{dt.codpro}}>
-                                                    {{dt.detalle}}</mat-option>
-                                            </mat-select>
-                                            <small *ngIf="!codpro.valid && codpro.touched"
+         
+                                    <div class="col-sm-3 pb-3 form-group">
+
+                                        <label for="exampleAccount" for="nompro"><b>Profesión</b></label>
+                                        <input class="form-control" id="exampleAccount" type="text"
+                                            (input)="getNomin16($event)" name="nompro" placeholder="Buscar..."
+                                            for="nompro" #nompro="ngModel" [(ngModel)]="formulario.nompro"
+                                            value={{formulario.nompro}} required>
+                                        <div class="col-sm-12">
+                                             <div class="card card-body mb-1" *ngFor="let result of data216"
+                                                (click)="getDatosGener216(result)" style="cursor: pointer;">
+                                                <h4>Profesión: {{result.detalle}}</h4>
+                                            </div>
+                                            <small *ngIf="!nompro.valid && nompro.touched"
                                                 class="invalid-feedback d-block">
                                                 El campo no es valido!
                                             </small>
-
-                                        </mat-form-field>
+                                        </div>
                                     </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="grusan"><b>Grupo Sanguineo *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="grusan"
+                                            placeholder="grusan" for="grusan" #grusan="ngModel"
+                                            [(ngModel)]="formulario.grusan" required>
+                                            <option *ngFor="let td of grupoSanguineo" value={{td.codgru}}>{{td.detgru}}</option>
+                                        </select>
+                                        <small *ngIf="!grusan.valid && grusan.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="tipviv"><b>Tipo de Vivienda *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="tipviv"
+                                            placeholder="tipviv" for="grusan" #tipviv="ngModel"
+                                            [(ngModel)]="formulario.tipviv" required>
+                                            <option value='3'>FAMILIAR</option>
+                                            <option value='2'>ARRENDADA</option>
+                                            <option value='1'>PROPIA</option>
+                                        </select>
+                                        <small *ngIf="!tipviv.valid && tipviv.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+                                    <div class="col-sm-3 pb-3 form-group">
+                                        <label for="exampleAccount" for="estrato"><b>Estrato *</b></label>
+                                        <select class="form-select col" id="inputGroupSelect01" name="estrato"
+                                            placeholder="estrato" for="estrato" #estrato="ngModel"
+                                            [(ngModel)]="formulario.estrato" required>
+                                            <option *ngFor="let td of menum_estrato" value={{td.value}}>{{td.label}}</option>
+                                            
+                                        </select>
+                                        <small *ngIf="!estrato.valid && estrato.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                    </div>
+
                                 </div>
 
 

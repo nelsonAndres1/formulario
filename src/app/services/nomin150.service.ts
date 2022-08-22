@@ -20,10 +20,14 @@ export class Nomin150Service {
 /*     Route::get('/api/formulario/searchnomin216',[App\Http\Controllers\FormularioController::class,'nomin216']);
 Route::get('/api/formulario/searchgener08',[App\Http\Controllers\FormularioController::class,'gener08']); */
 
+
+    
+
+
     searchNomin216(pclave:any){
         const response = new Promise(
             resolve=>{
-                this._http.get(global.url+`formulario/searchnomin216?search=${pclave}`).subscribe(data =>{
+                this._http.get(global.url+`nomin150/searchNomin216?search=${pclave}`).subscribe(data =>{
                     resolve(data);
                 }, err => {
                     console.log(err);
@@ -52,6 +56,13 @@ Route::get('/api/formulario/searchgener08',[App\Http\Controllers\FormularioContr
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
         return this._http.post(this.url + 'nomin150/gener18', params, { headers: headers });
 
+    }
+    getGener19(user: any){
+        let params = 'json=';
+        console.log("parametros!")
+        console.log(params);
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        return this._http.post(this.url + 'nomin150/gener19', params, { headers: headers });
     }
 
     getGener08(user: any): Observable<any> {

@@ -161,6 +161,23 @@ export class FormularioComponent implements OnInit {
 		{ value: "UR", label: "URBANIZACIÓN" },
 		{ value: "ZN", label: "ZONA" },
 	];
+
+	menum_tipviv = [
+		{ value: '3', label: 'FAMILIAR' },
+		{ value: '2', label: 'ARRENDADA' },
+		{ value: '1', label: 'PROPIA' },
+	];
+
+	menum_estrato = [
+		{ value: '1', label: 'ESTRATO 1' },
+		{ value: '2', label: 'ESTRATO 2' },
+		{ value: '3', label: 'ESTRATO 3' },
+		{ value: '4', label: 'ESTRATO 4' },
+		{ value: '5', label: 'ESTRATO 5' },
+		{ value: '6', label: 'ESTRATO 6' },
+	];
+
+
 	datoDireccion: any;
 	tipdoc: any;
 	tipciu: any;
@@ -172,9 +189,11 @@ export class FormularioComponent implements OnInit {
 	profesiones: any;
 	dataG8: any;
 	dataNa: any;
+	data216: any;
+	grupoSanguineo: any;
 
 	constructor(private renderer: Renderer2, private _formulario: FormularioService, private _nomin150service: Nomin150Service, private route: Router) {
-		this.formulario = new Formulario('', '', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '');
+		this.formulario = new Formulario('', '', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '','','','','');
 		this.datos = localStorage.getItem('usuarioConsultado');
 		this.datos = this.datos.replace(/ /g, "");
 		this.datos = JSON.parse(this.datos + '');
@@ -240,6 +259,17 @@ export class FormularioComponent implements OnInit {
 				console.log("nomin216");
 				this.profesiones = response;
 			}
+		);
+		
+		//llamado grupo sanguineo
+
+
+		this._nomin150service.getGener19(this.formulario).subscribe(
+			response=>{
+				console.log("gener19");
+				this.grupoSanguineo=response;
+				console.log(this.grupoSanguineo);
+			}
 		)
 	}
 
@@ -251,13 +281,14 @@ export class FormularioComponent implements OnInit {
 		const keyword = pclave.target.value;
 		if (keyword.length > 0) {
 			const search = this._nomin150service.searchNomin216(keyword).then(response => {
-				this.dataG8 = response;
-				console.log(this.dataG8);
+				this.data216 = response;
+				console.log(this.data216);
 			})
 		} else {
 
 		}
 	}
+
 	//Ciudad de expedición
 	getGener08(pclave: any) {
 
@@ -280,7 +311,11 @@ export class FormularioComponent implements OnInit {
 
 
 	}
-
+	getDatosGener216(datosGener08) {
+		this.formulario.codpro = datosGener08.codpro;
+		this.formulario.nompro = datosGener08.detalle;
+		this.data216 = [];
+	}
 
 	getDatosGener08(datosGener08) {
 		this.formulario.ciuexp = datosGener08.codciu;

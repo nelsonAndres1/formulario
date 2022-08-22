@@ -26,7 +26,11 @@ export class Formulario{
         public numlibmil: string,
         public clalibmil: string,
         public dislibmil: string,
-        public codpro: string
+        public codpro: string,
+        public nompro: string,//nombre de la profesion
+        public grusan: string,
+        public tipviv: string,
+        public estrato: string
         ){
     }
 }
