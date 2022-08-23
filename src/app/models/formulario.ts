@@ -34,6 +34,8 @@ export class Formulario {
         public paires: string,
         public ciures: string,
         public nomciures: string,//solo para nombre
+        public codbar: string,
+        public nombar: string//Nombre de barrio
     ) {
     }
 }

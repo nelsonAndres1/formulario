@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { FormularioService } from '../services/formulario.service';
 import { Router } from '@angular/router';
 import { Nomin150Service } from '../services/nomin150.service';
+import { Barrio } from '../models/barrio';
 @Component({
 	selector: 'app-formulario',
 	templateUrl: './formulario.component.html',
@@ -192,9 +193,10 @@ export class FormularioComponent implements OnInit {
 	dataRe: any;
 	data216: any;
 	grupoSanguineo: any;
+	barrios:any=[];
 
 	constructor(private renderer: Renderer2, private _formulario: FormularioService, private _nomin150service: Nomin150Service, private route: Router) {
-		this.formulario = new Formulario('', '', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '','','','','','','','');
+		this.formulario = new Formulario('', '', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '','','','','','','','','','');
 		this.datos = localStorage.getItem('usuarioConsultado');
 		this.datos = this.datos.replace(/ /g, "");
 		this.datos = JSON.parse(this.datos + '');
@@ -275,7 +277,7 @@ export class FormularioComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-
+		
 	}
 
 	getNomin16(pclave: any) {
@@ -346,6 +348,7 @@ export class FormularioComponent implements OnInit {
 		this.formulario.ciures = datosGener08.codciu;
 		this.formulario.nomciures = datosGener08.detciu;
 		this.dataRe = [];
+		this.comprobarBarrio();
 	}
 	
 
@@ -409,5 +412,27 @@ export class FormularioComponent implements OnInit {
 		console.log(result);
 		this.bandera = true;
 	}
+
+
+	comprobarBarrio(){
+		if(this.formulario.ciures != ''){
+			console.log("entrooo!");
+			this.formulario.ciures
+			this._nomin150service.getBarrio(new Barrio(this.formulario.ciures)).subscribe(
+				response=>{
+					console.log("Barriosssssss!");
+					console.log(response);
+					if(response.length==0){
+						this.barrios=[{codbar: this.formulario.ciures, codciu: this.formulario.ciures, detalle: this.formulario.nomciures}];
+					}else{
+						this.barrios=response;
+					}
+				}
+			)
+		}else{
+			console.log("No hay ciudad de residencia");
+		}
+	}
+
 
 }

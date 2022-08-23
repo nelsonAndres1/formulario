@@ -125,6 +125,17 @@ Route::get('/api/formulario/searchgener08',[App\Http\Controllers\FormularioContr
 
     }
 
+    getBarrio(user: any): Observable<any> {
+        let json = JSON.stringify(user);
+        let params = 'json='+json;
+        console.log("parametros!");
+        console.log(params);
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        return this._http.post(this.url + 'nomin150/getBarrio', params, { headers: headers });
+
+    }
+
+    
 
 
 
