@@ -65,6 +65,8 @@ Route::get('/api/formulario/searchgener08',[App\Http\Controllers\FormularioContr
         return this._http.post(this.url + 'nomin150/gener19', params, { headers: headers });
     }
 
+    
+
     getGener08(user: any): Observable<any> {
         //let json = JSON.stringify(user);
         let params = 'json=';
