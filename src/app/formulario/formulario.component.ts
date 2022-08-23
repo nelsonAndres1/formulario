@@ -301,6 +301,7 @@ export class FormularioComponent implements OnInit {
 
 
 	}
+	//Holaaaaa
 	//Ciudad de Nacimiento
 	getGener08Na(pclave: any) {
 
