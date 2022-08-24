@@ -5,6 +5,7 @@ import { FormularioService } from '../services/formulario.service';
 import { Router } from '@angular/router';
 import { Nomin150Service } from '../services/nomin150.service';
 import { Barrio } from '../models/barrio';
+import Swal from 'sweetalert2';
 @Component({
 	selector: 'app-formulario',
 	templateUrl: './formulario.component.html',
@@ -364,8 +365,12 @@ export class FormularioComponent implements OnInit {
 	onSubmit(form) {
 		console.log("aqui!");
 		console.log(this.formulario);
-		localStorage.removeItem('usuarioConsultado');
-		this.route.navigate(['inicio-formulario'])
+
+		if(this.formulario.ciuexp=='' || this.formulario.ciunac=='' || this.formulario.ciures==''){
+			console.log("faltan datos!");
+		}else{
+			this.saveNomin440();
+		}	
 
 	}
 
@@ -413,7 +418,48 @@ export class FormularioComponent implements OnInit {
 		this.bandera = true;
 	}
 
+	saveNomin440(){
 
+		Swal.fire({
+			icon: 'warning',
+			title: '¿Esta seguro de guardar los datos?',
+			showDenyButton: true,
+			showCancelButton: true,
+			confirmButtonText: 'Guardar',
+			denyButtonText: `No Guardar`,
+		  }).then((result) => {
+			if (result.isConfirmed) {
+				
+				this._formulario.saveNomin440(this.formulario).subscribe(
+					response=>{
+						console.log("Respueta de Guardado");
+						console.log(response);
+						if(response.status=='success'){
+		
+							Swal.fire({
+								position: 'top-end',
+								icon: 'success',
+								title: 'Sus datos se guardaron con exito!',
+								showConfirmButton: false,
+								timer: 1500
+							  }).then(()=> {
+								localStorage.removeItem('usuarioConsultado');
+								this.route.navigate(['inicio-formulario']);
+							}) 
+						}else{
+							Swal.fire(
+								'Error',
+								'Datos no guardados',
+								'error'
+							  )
+						}
+					}
+				);
+			} else if (result.isDenied) {
+			  Swal.fire('Datos no guardados', '', 'info')
+			}
+		  })
+	}
 	comprobarBarrio(){
 		if(this.formulario.ciures != ''){
 			console.log("entrooo!");
