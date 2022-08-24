@@ -279,7 +279,7 @@ export class FormularioComponent implements OnInit {
 
 		this._nomin150service.getGener19(this.formulario).subscribe(
 			response=>{
-				console.log("gener19");
+				console.log("gener19 -  GS");
 				this.grupoSanguineo=response;
 				console.log(this.grupoSanguineo);
 			}
