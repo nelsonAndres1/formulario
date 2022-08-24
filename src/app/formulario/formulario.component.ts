@@ -195,6 +195,7 @@ export class FormularioComponent implements OnInit {
 	data216: any;
 	grupoSanguineo: any;
 	barrios:any=[];
+	profesiones2: any;
 
 	constructor(private renderer: Renderer2, private _formulario: FormularioService, private _nomin150service: Nomin150Service, private route: Router) {
 		this.formulario = new Formulario('', '', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '','','','','','','','','','');
@@ -262,8 +263,16 @@ export class FormularioComponent implements OnInit {
 			response => {
 				console.log("nomin216");
 				this.profesiones = response;
+				console.log(response);
 			}
 		);
+
+		this._nomin150service.get_nomin216(this.formulario).subscribe(
+			response => {
+				console.log("profesiones");
+				this.profesiones2=response;
+			}
+		)
 		
 		//llamado grupo sanguineo
 
@@ -275,6 +284,7 @@ export class FormularioComponent implements OnInit {
 				console.log(this.grupoSanguineo);
 			}
 		)
+		
 	}
 
 	ngOnInit(): void {
@@ -286,6 +296,7 @@ export class FormularioComponent implements OnInit {
 		if (keyword.length > 0) {
 			const search = this._nomin150service.searchNomin216(keyword).then(response => {
 				this.data216 = response;
+				console.log("respuesta_respuesta!!!");
 				console.log(this.data216);
 			})
 		} else {

@@ -313,8 +313,19 @@
 
                                     <div class="col-sm-3 pb-3 form-group">
 
-                                        <label for="exampleAccount" for="nompro"><b>Profesión</b></label>
-                                        <input class="form-control" id="exampleAccount" type="text"
+                                        <label for="exampleAccount" for="codpro"><b>Profesión</b></label>
+
+                                        <select class="form-select col" id="inputGroupSelect01" name="codpro"
+                                            placeholder="codpro" for="codpro" #codpro="ngModel"
+                                            [(ngModel)]="formulario.codpro" required>
+                                            <option *ngFor="let td of profesiones2" value={{td.codpro}}>{{td.detalle}}
+                                            </option>
+                                            <!-- <option *ngFor="let td of tippai" value={{td.codpai}}>{{td.detpai}}</option> -->
+                                        </select>
+                                        <small *ngIf="!codpro.valid && codpro.touched" class="invalid-feedback d-block">
+                                            El campo no es valido!
+                                        </small>
+                                        <!-- <input class="form-control" id="exampleAccount" type="text"
                                             (input)="getNomin16($event)" name="nompro" placeholder="Buscar..."
                                             for="nompro" #nompro="ngModel" [(ngModel)]="formulario.nompro"
                                             value={{formulario.nompro}} required>
@@ -327,7 +338,7 @@
                                                 class="invalid-feedback d-block">
                                                 El campo no es valido!
                                             </small>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="col-sm-3 pb-3 form-group">
                                         <label for="exampleAccount" for="grusan"><b>Grupo Sanguineo *</b></label>
