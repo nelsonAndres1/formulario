@@ -216,10 +216,9 @@
                                         <label for="exampleAccount" for="telefono"><b>Telefono</b></label>
                                         <input class="form-control" id="exampleAccount" name="telefono"
                                             placeholder="Telefono" type="tel" #telefono="ngModel"
-                                            [(ngModel)]="formulario.telefono" required pattern="[0-9]{10}">
-                                        <small *ngIf="!telefono.valid && telefono.touched"
-                                            class="invalid-feedback d-block">
-                                            Celular o Telefono Invalido!
+                                            [(ngModel)]="formulario.telefono" pattern="[0-9]{10}">
+                                        <small *ngIf="!telefono.valid" class="invalid-feedback d-block">
+                                            Telefono Invalido!
                                         </small>
                                     </div>
 
@@ -315,17 +314,16 @@
 
                                         <label for="exampleAccount" for="codpro"><b>Profesión</b></label>
 
-                                        <select class="form-select col" id="inputGroupSelect01" name="codpro"
+                                        <!--                                         <select class="form-select col" id="inputGroupSelect01" name="codpro"
                                             placeholder="codpro" for="codpro" #codpro="ngModel"
                                             [(ngModel)]="formulario.codpro" required>
                                             <option *ngFor="let td of profesiones2" value={{td.codpro}}>{{td.detalle}}
                                             </option>
-                                            <!-- <option *ngFor="let td of tippai" value={{td.codpai}}>{{td.detpai}}</option> -->
                                         </select>
                                         <small *ngIf="!codpro.valid && codpro.touched" class="invalid-feedback d-block">
                                             El campo no es valido!
-                                        </small>
-                                        <!-- <input class="form-control" id="exampleAccount" type="text"
+                                        </small> -->
+                                        <input class="form-control" id="exampleAccount" type="text"
                                             (input)="getNomin16($event)" name="nompro" placeholder="Buscar..."
                                             for="nompro" #nompro="ngModel" [(ngModel)]="formulario.nompro"
                                             value={{formulario.nompro}} required>
@@ -338,7 +336,7 @@
                                                 class="invalid-feedback d-block">
                                                 El campo no es valido!
                                             </small>
-                                        </div> -->
+                                        </div>
                                     </div>
                                     <div class="col-sm-3 pb-3 form-group">
                                         <label for="exampleAccount" for="grusan"><b>Grupo Sanguineo *</b></label>
@@ -496,6 +494,7 @@
 
                                     <div class="card-body">
                                         <div class="row mt-12">
+                                            <h3 class="mb-6"><b>Identificación de la via</b></h3>
                                             <div class="col-sm-3 pb-3 form-group">
                                                 <select id="dirpart1" [(ngModel)]="dirpart1" (blur)="addDireccion()">
                                                     <option value='' selected></option>
@@ -507,51 +506,51 @@
                                                 <input [(ngModel)]="dirpart2" id="dirpart2" type="text" maxlength="25"
                                                     data-length="25" (blur)="addDireccion()">
                                             </div>
-                                            <div class="col-sm-3 pb-3 form-group">
+                                            <div class="col-sm-2 pb-3 form-group">
                                                 <select id="dirpart3" [(ngModel)]="dirpart3" (blur)="addDireccion()">
                                                     <option value='' selected></option>
                                                     <option *ngFor="let mpart3 of menum_dirpart3"
                                                         [value]="mpart3.value">{{mpart3.label}}</option>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-3 pb-3 form-group">
+                                            <div class="col-sm-2 pb-3 form-group">
                                                 <select id="dirpart4" [(ngModel)]="dirpart4" (blur)="addDireccion()">
                                                     <option value='' selected></option>
                                                     <option *ngFor="let mpart4 of menum_dirpart4"
                                                         [value]="mpart4.value">{{mpart4.label}}</option>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div class="row mt-12">
-                                            <div class="col-sm-3 pb-3 form-group">
+                                            <div class="col-sm-2 pb-3 form-group">
                                                 <select id="dirpart5" [(ngModel)]="dirpart5" (blur)="addDireccion()">
                                                     <option value='' selected></option>
                                                     <option *ngFor="let mpart5 of menum_dirpart5"
                                                         [value]="mpart5.value">{{mpart5.label}}</option>
                                                 </select>
                                             </div>
+                                        </div>
+
+                                        <div class="row mt-12">
+                                            <h3 class="mb-6"><b>Numero de la via</b></h3>
                                             <div class="col-sm-3 pb-3 form-group">
                                                 <input [(ngModel)]="dirpart6" id="dirpart6" placeholder="No."
                                                     type="text" OnlyNumber="true" maxlength="3" data-length="3"
                                                     (blur)="addDireccion()">
                                             </div>
-                                            <div class="col-sm-3 pb-3 form-group">
+                                            <div class="col-sm-2 pb-3 form-group">
                                                 <select id="dirpart7" [(ngModel)]="dirpart7" (blur)="addDireccion()">
                                                     <option value='' selected></option>
                                                     <option *ngFor="let mpart3 of menum_dirpart3"
                                                         [value]="mpart3.value">{{mpart3.label}}</option>
                                                 </select>
                                             </div>
-                                            <div class="col-sm-3 pb-3 form-group">
+                                            <div class="col-sm-2 pb-3 form-group">
                                                 <select id="dirpart8" [(ngModel)]="dirpart8" (blur)="addDireccion()">
                                                     <option value='' selected></option>
                                                     <option *ngFor="let mpart4 of menum_dirpart4"
                                                         [value]="mpart4.value">{{mpart4.label}}</option>
                                                 </select>
                                             </div>
-                                        </div>
-                                        <div class="row mt-12">
-                                            <div class="col-sm-3 pb-3 form-group">
+                                            <div class="col-sm-2 pb-3 form-group">
                                                 <select id="dirpart9" [(ngModel)]="dirpart9" (blur)="addDireccion()">
                                                     <option value='' selected></option>
                                                     <option *ngFor="let mpart5 of menum_dirpart5"
@@ -562,6 +561,9 @@
                                                 <input [(ngModel)]="dirpart10" id="dirpart10" type="text" maxlength="15"
                                                     data-length="15" (blur)="addDireccion()">
                                             </div>
+                                        </div>
+                                        <div class="row mt-12">
+                                            <h3 class="mb-6"><b>Lugar</b></h3>
                                             <div class="col-sm-3 pb-3 form-group">
                                                 <select id="dirpart11" [(ngModel)]="dirpart11" (blur)="addDireccion()">
                                                     <option value='' selected></option>
@@ -574,8 +576,6 @@
                                                 <input [(ngModel)]="dirpart12" id="dirpart12" type="text" maxlength="3"
                                                     data-length="3" (blur)="addDireccion()">
                                             </div>
-                                        </div>
-                                        <div class="row mt-12">
                                             <div class="col-sm-3 pb-3 form-group">
                                                 <select id="dirpart13" [(ngModel)]="dirpart13" (blur)="addDireccion()">
                                                     <option value='' selected></option>
@@ -589,6 +589,9 @@
                                                     data-length="3" (blur)="addDireccion()">
 
                                             </div>
+                                        </div>
+                                        <div class="row mt-12">
+                                            <h3 class="mb-6"><b>Residencia</b></h3>
                                             <div class="col-sm-3 pb-3 form-group">
                                                 <select id="dirpart15" [(ngModel)]="dirpart15" (blur)="addDireccion()">
                                                     <option value='' selected></option>

@@ -162,6 +162,7 @@ export class FormularioComponent implements OnInit {
 		{ value: "UL", label: "UNIDAD RESIDENCIAL" },
 		{ value: "UR", label: "URBANIZACIÓN" },
 		{ value: "ZN", label: "ZONA" },
+		{ value: "BR", label: "BARRIO" }
 	];
 
 	menum_tipviv = [

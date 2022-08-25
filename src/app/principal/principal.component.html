@@ -1,0 +1,48 @@
+<!-- <div class="mat-elevation-z8">
+  <cdk-virtual-scroll-viewport style="height: 600px" itemSize=10>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Cedula</th>
+          <th scope="col">Nombre</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *cdkVirtualFor="let dt of usuarios | filter:filterPost">
+          <th scope="row">{{dt.numero}}</th>
+          <td>{{dt.Documento}}</td>
+          <td>{{dt.Nombre}}</td>
+          <td>
+            {{dt.dependencia}}
+          </td>
+          <td>
+            <select id="test" (change)="onCambio($event,dt.codact)" class="form-select" on
+              aria-label="Default select example">
+              <option value="B">Bueno</option>
+              <option value="R">Regular</option>
+              <option value="D">Dañado</option>
+              <option value="O">Obsoleto</option>
+            </select>
+          </td>
+          <td>
+            <textarea class="form-control" (input)="onText($event,dt.codact)" aria-label="With textarea"></textarea>
+          </td>
+          <td>
+            
+              <input class="form-check-input" type="checkbox" [value]="dt.codact" (change)="onChange($event,dt)"
+                [checked]="dt.select" (click)="filterName.value=' '" (ng-model)="dt.activo" [checked]="dt.checked"
+                style="cursor: pointer;">
+            
+  
+          </td>
+        </tr>
+  
+      </tbody>
+  
+    </table>
+  </cdk-virtual-scroll-viewport>
+  </div>
+  <br>
+   -->

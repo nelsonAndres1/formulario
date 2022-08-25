@@ -27,7 +27,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { FormularioComponent } from './formulario/formulario.component';
 import { InicioFormularioComponent } from './inicio-formulario/inicio-formulario.component';
-
+import { PrincipalComponent } from './principal/principal.component';
+import { MatTableModule } from '@angular/material/table'  
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -38,7 +40,8 @@ import { InicioFormularioComponent } from './inicio-formulario/inicio-formulario
     ErrorComponent,
     FilterPipe,
     FormularioComponent,
-    InicioFormularioComponent
+    InicioFormularioComponent,
+    PrincipalComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,10 @@ import { InicioFormularioComponent } from './inicio-formulario/inicio-formulario
     ScrollingModule,
     MatCheckboxModule,
     MatButtonModule, 
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatPaginatorModule,
+
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy }
