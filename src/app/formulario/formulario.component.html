@@ -324,9 +324,9 @@
                                             El campo no es valido!
                                         </small> -->
                                         <input class="form-control" id="exampleAccount" type="text"
-                                            (input)="getNomin16($event)" name="nompro" placeholder="Buscar..."
-                                            for="nompro" #nompro="ngModel" [(ngModel)]="formulario.nompro"
-                                            value={{formulario.nompro}} required>
+                                            (input)="getNomin16($event)"  style="text-transform:uppercase;"
+                                             name="nompro" placeholder="Buscar..." for="nompro" #nompro="ngModel" 
+                                             [(ngModel)]="formulario.nompro" value={{formulario.nompro}} required>
                                         <div class="col-sm-12">
                                             <div class="card card-body mb-1" *ngFor="let result of data216"
                                                 (click)="getDatosGener216(result)" style="cursor: pointer;">
