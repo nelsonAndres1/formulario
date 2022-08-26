@@ -92,7 +92,7 @@
                                         <label for="exampleAccount" for="prinom"><b>Primer Nombre *</b></label>
                                         <input class="form-control" id="exampleAccount" name="prinom"
                                             placeholder="Primer Nombre" type="text" #prinom="ngModel"
-                                            [(ngModel)]="formulario.prinom" required pattern="[a-zA-Z]+">
+                                            [(ngModel)]="formulario.prinom" disabled required pattern="[a-zA-Z]+">
                                         <small *ngIf="!prinom.valid && prinom.touched" class="invalid-feedback d-block">
                                             El campo no es valido!
                                         </small>
@@ -102,7 +102,7 @@
                                         <label for="exampleAccount" for="segnom"><b>Segundo Nombre </b></label>
                                         <input class="form-control" id="exampleAccount" name="segnom"
                                             placeholder="Segundo Nombre" type="text" #segnom="ngModel"
-                                            [(ngModel)]="formulario.segnom" pattern="[a-zA-Z]+">
+                                            [(ngModel)]="formulario.segnom" disabled pattern="[a-zA-Z]+">
                                         <small *ngIf="!segnom.valid && segnom.touched" class="invalid-feedback d-block">
                                             El campo no es valido!
                                         </small>
@@ -115,7 +115,7 @@
                                         <label for="exampleAccount" for="priape"><b>Primer Apellido *</b></label>
                                         <input class="form-control" id="exampleAccount" name="priape"
                                             placeholder="Primer Nombre" type="text" #priape="ngModel"
-                                            [(ngModel)]="formulario.priape" required pattern="[a-zA-Z]+">
+                                            [(ngModel)]="formulario.priape" disabled required pattern="[a-zA-Z]+">
                                         <small *ngIf="!priape.valid && priape.touched" class="invalid-feedback d-block">
                                             El campo no es valido!
                                         </small>
@@ -125,7 +125,7 @@
                                         <label for="exampleAccount" for="segape"><b>Segundo Apellido </b></label>
                                         <input class="form-control" id="exampleAccount" name="segape"
                                             placeholder="Segundo Nombre" type="text" #segape="ngModel"
-                                            [(ngModel)]="formulario.segape" pattern="[a-zA-Z]+">
+                                            [(ngModel)]="formulario.segape" disabled pattern="[a-zA-Z]+">
                                         <small *ngIf="!segape.valid && segape.touched" class="invalid-feedback d-block">
                                             El campos no es valido!
                                         </small>
