@@ -209,6 +209,8 @@ export class FormularioComponent implements OnInit {
 		this.datoDireccion = JSON.parse(localStorage.getItem('usuarioConsultado') + '');
 		this.formulario.direccion = '';
 
+		
+		
 
 		//llamado tipos de documentos
 		this._nomin150service.getGener18(this.formulario).subscribe(
@@ -232,6 +234,7 @@ export class FormularioComponent implements OnInit {
 		this._nomin150service.getGener14(this.formulario).subscribe(
 			response => {
 				this.tippai = response;
+				console.log(this.tippai);
 			}
 		);
 
@@ -490,6 +493,14 @@ export class FormularioComponent implements OnInit {
 			)
 		}else{
 			console.log("No hay ciudad de residencia");
+		}
+	}
+
+	comprobar_ciudad(){
+		if(this.formulario.paires=='169' || this.formulario.paires==''){
+			
+		}else{
+			this.dataRe=[{'codciu':this.tippai.codpai,'detciu':this.tippai.detpai}];
 		}
 	}
 

@@ -60,7 +60,7 @@
                                             style="text-transform:uppercase;" type="text" (input)="getGener08($event)"
                                             name="nomciuexp" placeholder="Buscar..." for="nomciuexp"
                                             #nomciuexp="ngModel" [(ngModel)]="formulario.nomciuexp"
-                                            value={{formulario.nomciuexp}} required>
+                                            value={{formulario.nomciuexp}} autocomplete="off" required>
                                         <div class="col-sm-12">
                                             <div class="card card-body mb-1" *ngFor="let result of data"
                                                 (click)="getDatosGener08(result)" style="cursor: pointer;">
@@ -150,7 +150,7 @@
                                             (input)="getGener08Na($event)" style="text-transform:uppercase;"
                                             name="nomciunac" placeholder="Buscar..." for="nomciunac"
                                             #nomciunac="ngModel" [(ngModel)]="formulario.nomciunac"
-                                            value={{formulario.nomciunac}} required>
+                                            value={{formulario.nomciunac}} autocomplete="off" required>
                                         <div class="col-sm-12">
                                             <div class="card card-body mb-1" *ngFor="let result of dataNa"
                                                 (click)="getDatosGener08Na(result)" style="cursor: pointer;">
@@ -326,7 +326,7 @@
                                         <input class="form-control" id="exampleAccount" type="text"
                                             (input)="getNomin16($event)"  style="text-transform:uppercase;"
                                              name="nompro" placeholder="Buscar..." for="nompro" #nompro="ngModel" 
-                                             [(ngModel)]="formulario.nompro" value={{formulario.nompro}} required>
+                                             [(ngModel)]="formulario.nompro" value={{formulario.nompro}} autocomplete="off" required>
                                         <div class="col-sm-12">
                                             <div class="card card-body mb-1" *ngFor="let result of data216"
                                                 (click)="getDatosGener216(result)" style="cursor: pointer;">
@@ -398,7 +398,7 @@
                                             (input)="getGener08Re($event)" style="text-transform:uppercase;"
                                             name="nomciures" placeholder="Buscar..." for="nomciures"
                                             #nomciures="ngModel" [(ngModel)]="formulario.nomciures"
-                                            value={{formulario.nomciures}} required>
+                                            value={{formulario.nomciures}} autocomplete="off" required>
                                         <div class="col-sm-12">
                                             <div class="card card-body mb-1" *ngFor="let result of dataRe"
                                                 (click)="getDatosGener08Re(result)" style="cursor: pointer;">

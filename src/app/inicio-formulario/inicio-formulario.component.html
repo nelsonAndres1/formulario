@@ -13,8 +13,8 @@
             <div class="row justify-content-center">
                 <div class="col-sm-6 pb-3">
                     <label for="exampleAccount"><b>Busqueda de Usuario</b></label>
-                    <input class="form-control" id="exampleAccount" placeholder="Nombre o Cedula" type="text"
-                        (input)="getGener02($event)" required>
+                    <input class="form-control" id="exampleAccount" placeholder="Buscar Cedula ..." type="text"
+                        (input)="getGener02($event)" autocomplete="off" required>
                     <div class="col-sm-12">
                         <div class="card card-body mb-1" *ngFor="let result of data" (click)="getDatos(result)"
                             style="cursor: pointer;">
