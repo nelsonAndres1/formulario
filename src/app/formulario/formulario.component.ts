@@ -207,7 +207,8 @@ export class FormularioComponent implements OnInit {
 		console.log(this.datos);
 		this.formulario = this.datos;
 		this.datoDireccion = JSON.parse(localStorage.getItem('usuarioConsultado') + '');
-		this.formulario.direccion = this.datoDireccion.direccion;
+		this.formulario.direccion = '';
+
 
 		//llamado tipos de documentos
 		this._nomin150service.getGener18(this.formulario).subscribe(

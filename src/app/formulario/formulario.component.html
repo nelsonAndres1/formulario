@@ -216,7 +216,7 @@
                                         <label for="exampleAccount" for="telefono"><b>Telefono</b></label>
                                         <input class="form-control" id="exampleAccount" name="telefono"
                                             placeholder="Telefono" type="tel" #telefono="ngModel"
-                                            [(ngModel)]="formulario.telefono" pattern="[0-9]{10}">
+                                            [(ngModel)]="formulario.telefono" pattern="[0-9]{7}">
                                         <small *ngIf="!telefono.valid" class="invalid-feedback d-block">
                                             Telefono Invalido!
                                         </small>
