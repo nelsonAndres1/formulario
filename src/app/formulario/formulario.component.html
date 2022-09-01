@@ -446,10 +446,16 @@
                                 <div class="row mt-4">
                                     <div class="float-right">
                                         <div class="row mt-4">
-                                            <div class="col-sm-10 pb-3">
-                                                <input class="btn btn-success" type="submit" value="Enviar Información"
-                                                    [disabled]="registerForm.invalid">
+                                            <div class="row mt-12">
+                                                <div class="col-sm-5 pb-2">
+                                                    <input class="btn btn-success" type="submit" value="Enviar Información"
+                                                        [disabled]="registerForm.invalid">
+                                                </div>
+                                                <div class="col-sm-5 pb-10">
+                                                    <button class="btn btn-warning" (click)="volver()">Continuar luego</button>
+                                                </div>
                                             </div>
+                                            
                                         </div>
                                     </div>
                                 </div>

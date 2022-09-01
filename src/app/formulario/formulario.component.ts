@@ -433,6 +433,9 @@ export class FormularioComponent implements OnInit {
 		console.log(result);
 		this.bandera = true;
 	}
+	volver(){
+		this.route.navigate(['inicio-formulario']);
+	}
 
 	saveNomin440(){
 
