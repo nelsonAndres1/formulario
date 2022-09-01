@@ -6,7 +6,7 @@ import { FormularioComponent } from "./formulario/formulario.component";
 import { InicioFormularioComponent } from "./inicio-formulario/inicio-formulario.component";
 import { PrincipalComponent } from "./principal/principal.component";
 const appRoutes: Routes = [
-    {path: '', component: LoginComponent},
+    {path: '', component: InicioFormularioComponent},
     {path: 'login', component: LoginComponent},
     {path: 'logout/:sure', component:LoginComponent},
     {path: 'inicio-formulario', component:InicioFormularioComponent},
