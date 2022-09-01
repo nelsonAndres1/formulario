@@ -71,19 +71,6 @@
                                                 El campo no es valido!
                                             </small>
                                         </div>
-
-                                        <!--                                         <mat-form-field appearance="fill">
-                                            <label for="exampleAccount" for="ciuexp"><b>Ciudad de Expedición
-                                                    *</b></label>
-                                            <mat-select [(value)]="selected" name="ciuexp" placeholder="ciuexp"
-                                                for="ciuexp" #ciuexp="ngModel" [(ngModel)]="formulario.ciuexp" required>
-                                                <mat-option *ngFor="let td of tipciu" value={{td.codciu}}>{{td.detciu}}
-                                                </mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
-                                        <small *ngIf="!ciuexp.valid && ciuexp.touched" class="invalid-feedback d-block">
-                                            El campo no es valido!
-                                        </small> -->
                                     </div>
                                 </div>
                                 <div class="row mt-12">
@@ -193,10 +180,10 @@
 
                                 <div class="row mt-12">
                                     <div class="col-sm-4 pb-3 form-group">
-                                        <label for="exampleAccount" for="email"><b>Correo Electronico *</b></label>
+                                        <label for="exampleAccount" for="email"><b>Correo Electronico Personal*</b></label>
                                         <input class="form-control" id="exampleAccount" name="email"
                                             placeholder="Correo Electronico" type="email" #email="ngModel"
-                                            [(ngModel)]="formulario.email" required
+                                            [(ngModel)]="formulario.email" style="text-transform:uppercase;" required
                                             pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$">
                                         <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
                                             Correo Invalido!
@@ -326,7 +313,7 @@
                                         <input class="form-control" id="exampleAccount" type="text"
                                             (input)="getNomin16($event)"  style="text-transform:uppercase;"
                                              name="nompro" placeholder="Buscar..." for="nompro" #nompro="ngModel" 
-                                             [(ngModel)]="formulario.nompro" value={{formulario.nompro}} autocomplete="off" required>
+                                             [(ngModel)]="formulario.nompro" value={{formulario.nompro}} autocomplete="off" style="text-transform:uppercase;" required>
                                         <div class="col-sm-12">
                                             <div class="card card-body mb-1" *ngFor="let result of data216"
                                                 (click)="getDatosGener216(result)" style="cursor: pointer;">
@@ -398,7 +385,7 @@
                                             (input)="getGener08Re($event)" style="text-transform:uppercase;"
                                             name="nomciures" placeholder="Buscar..." for="nomciures"
                                             #nomciures="ngModel" [(ngModel)]="formulario.nomciures"
-                                            value={{formulario.nomciures}} autocomplete="off" required>
+                                            value={{formulario.nomciures}} autocomplete="off" style="text-transform:uppercase;" required>
                                         <div class="col-sm-12">
                                             <div class="card card-body mb-1" *ngFor="let result of dataRe"
                                                 (click)="getDatosGener08Re(result)" style="cursor: pointer;">
@@ -416,7 +403,7 @@
                                         <select class="form-select col" id="inputGroupSelect01" name="codbar"
                                             placeholder="codbar" for="codbar" #codbar="ngModel"
                                             [(ngModel)]="formulario.codbar" required>
-                                            <option *ngFor="let td of barrios" value={{td.codbar}}>{{td.detalle}}
+                                            <option *ngFor="let td of barrios" value={{td.codbar}}><b>{{td.comuna}}</b> - {{td.detalle}}
                                             </option>
                                             <!-- <option *ngFor="let td of tippai" value={{td.codpai}}>{{td.detpai}}</option> -->
                                         </select>
@@ -440,7 +427,7 @@
                                             <input class="form-control" id="exampleAccount" name="direccion"
                                                 placeholder="Dirección" type="text" #direccion="ngModel"
                                                 [(ngModel)]="formulario.direccion" class="form-control"
-                                                id="exampleAccount" value={{formulario.direccion}} disabled required>
+                                                id="exampleAccount" value={{formulario.direccion}} style="text-transform:uppercase;" disabled required>
                                             <small *ngIf="!direccion.valid && direccion.touched"
                                                 class="invalid-feedback d-block">
                                                 Campo Incorrecto!
@@ -504,7 +491,7 @@
                                             </div>
                                             <div class="col-sm-3 pb-3 form-group">
                                                 <input [(ngModel)]="dirpart2" id="dirpart2" type="text" maxlength="25"
-                                                    data-length="25" (blur)="addDireccion()">
+                                                    data-length="25" (blur)="addDireccion()" style="text-transform:uppercase;">
                                             </div>
                                             <div class="col-sm-2 pb-3 form-group">
                                                 <select id="dirpart3" [(ngModel)]="dirpart3" (blur)="addDireccion()">
@@ -534,7 +521,7 @@
                                             <div class="col-sm-3 pb-3 form-group">
                                                 <input [(ngModel)]="dirpart6" id="dirpart6" placeholder="No."
                                                     type="text" OnlyNumber="true" maxlength="3" data-length="3"
-                                                    (blur)="addDireccion()">
+                                                    (blur)="addDireccion()" style="text-transform:uppercase;">
                                             </div>
                                             <div class="col-sm-2 pb-3 form-group">
                                                 <select id="dirpart7" [(ngModel)]="dirpart7" (blur)="addDireccion()">
@@ -559,7 +546,7 @@
                                             </div>
                                             <div class="col-sm-3 pb-3 form-group">
                                                 <input [(ngModel)]="dirpart10" id="dirpart10" type="text" maxlength="15"
-                                                    data-length="15" (blur)="addDireccion()">
+                                                    data-length="15" (blur)="addDireccion()" style="text-transform:uppercase;">
                                             </div>
                                         </div>
                                         <div class="row mt-12">
@@ -574,7 +561,7 @@
                                             </div>
                                             <div class="col-sm-3 pb-3 form-group">
                                                 <input [(ngModel)]="dirpart12" id="dirpart12" type="text" maxlength="3"
-                                                    data-length="3" (blur)="addDireccion()">
+                                                    data-length="3" (blur)="addDireccion()" style="text-transform:uppercase;">
                                             </div>
                                             <div class="col-sm-3 pb-3 form-group">
                                                 <select id="dirpart13" [(ngModel)]="dirpart13" (blur)="addDireccion()">
@@ -601,8 +588,12 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-3 pb-3 form-group">
-                                                <input [(ngModel)]="dirpart16" id="dirpart16" type="text" maxlength="60"
-                                                    data-length="60" (blur)="addDireccion()">
+                                                <select id="dirpart16" [(ngModel)]="dirpart16" (blur)="addDireccion()">
+                                                    <option value='' selected></option>
+                                                    <option *ngFor="let mpart13 of barrios"
+                                                        [value]="mpart13.detalle">{{mpart13.comuna}} - {{mpart13.detalle}}
+                                                    </option>
+                                                </select>
                                             </div>
                                         </div>
 

@@ -469,6 +469,8 @@ export class FormularioComponent implements OnInit {
 								'error'
 							  )
 						}
+					}, error => {
+						Swal.fire('Error verifique los datos', error, 'error')
 					}
 				);
 			} else if (result.isDenied) {
@@ -476,6 +478,13 @@ export class FormularioComponent implements OnInit {
 			}
 		  })
 	}
+	ordenarAsc(p_array_json, p_key) {
+		p_array_json.sort(function (a, b) {
+		   return a[p_key] > b[p_key];
+		   
+		});
+	 }
+
 	comprobarBarrio(){
 		if(this.formulario.ciures != ''){
 			console.log("entrooo!");
@@ -488,6 +497,10 @@ export class FormularioComponent implements OnInit {
 						this.barrios=[{codbar: this.formulario.ciures, codciu: this.formulario.ciures, detalle: this.formulario.nomciures}];
 					}else{
 						this.barrios=response;
+/* 						console.log("barrios");
+						this.ordenarAsc(this.barrios,'detalle'); */
+						console.log("barrios................................");
+						console.log(this.barrios);
 					}
 				}
 			)

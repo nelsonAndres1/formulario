@@ -16,6 +16,7 @@ export class InicioFormularioComponent implements OnInit {
 
   data: any;
   bandera: any;
+  autorizo=true;
   constructor(private _formulario: FormularioService, private _nomin150service: Nomin150Service, private route: Router) { }
 
   ngOnInit(): void {
@@ -35,6 +36,9 @@ export class InicioFormularioComponent implements OnInit {
     }
 
 
+  }
+  authorize() {
+    this.autorizo=false;
   }
   getDatos(result: any) {
 
