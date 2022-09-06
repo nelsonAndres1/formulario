@@ -1,48 +1,80 @@
-<!-- <div class="mat-elevation-z8">
-  <cdk-virtual-scroll-viewport style="height: 600px" itemSize=10>
-    <table class="table">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Cedula</th>
-          <th scope="col">Nombre</th>
-        </tr>
-      </thead>
-  
-      <tbody>
-        <tr *cdkVirtualFor="let dt of usuarios | filter:filterPost">
-          <th scope="row">{{dt.numero}}</th>
-          <td>{{dt.Documento}}</td>
-          <td>{{dt.Nombre}}</td>
-          <td>
-            {{dt.dependencia}}
-          </td>
-          <td>
-            <select id="test" (change)="onCambio($event,dt.codact)" class="form-select" on
-              aria-label="Default select example">
-              <option value="B">Bueno</option>
-              <option value="R">Regular</option>
-              <option value="D">Dañado</option>
-              <option value="O">Obsoleto</option>
-            </select>
-          </td>
-          <td>
-            <textarea class="form-control" (input)="onText($event,dt.codact)" aria-label="With textarea"></textarea>
-          </td>
-          <td>
+<div>
+    <h1 class="display-2">Usuarios Información Actualizada</h1>
+</div>
+<br>
+
+<cdk-virtual-scroll-viewport style="height: 600px" itemSize=5>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Documento</th>
+                <th scope="col">Tipo Documento</th>
+                <th scope="col">Fecha Expedición</th>
+                <th scope="col">Ciudad Expedición</th>
+                <th scope="col">1 Nombre</th>
+                <th scope="col">2 Nombre</th>
+                <th scope="col">1 Apellido</th>
+                <th scope="col">2 Apellido</th>
+                <th scope="col">Fecha Nacimiento</th>
+                <th scope="col">Ciudad Nacimiento</th>
+                <th scope="col">Pais Nacimiento</th>
+                <th scope="col">Dirección</th>
+                <th scope="col">Barrio</th>
+                <th scope="col">Ciudad Residencia</th>
+                <th scope="col">Pais Residencia</th>
+                <th scope="col">Sexo</th>
+                <th scope="col">Estado Civil</th>
+                <th scope="col">Raza</th>
+                <th scope="col">Comformación Familiar</th>
+                <th scope="col">Numero de Hijos</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Celular</th>
+                <th scope="col">Email</th>
+                <th scope="col">Numero libreta</th>
+                <th scope="col">Clase libreta</th>
+                <th scope="col">Distrito libreta</th>
+                <th scope="col">Profesión</th>
+                <th scope="col">Grupo Sanguineo</th>
+                <th scope="col">Tipo Vivienda</th>
+                <th scope="col">Estrato</th>
+            </tr>
+        </thead>
+
+        <tbody>
             
-              <input class="form-check-input" type="checkbox" [value]="dt.codact" (change)="onChange($event,dt)"
-                [checked]="dt.select" (click)="filterName.value=' '" (ng-model)="dt.activo" [checked]="dt.checked"
-                style="cursor: pointer;">
-            
-  
-          </td>
-        </tr>
-  
-      </tbody>
-  
+            <!-- <tr *cdkVirtualFor="let dt of activos | filter:filterPost"> -->
+            <tr *cdkVirtualFor="let dt of usuarios | filter:filterPost">
+                <td>{{dt.docemp}}</td>
+                <td>{{dt.detdoc}}</td>
+                <td>{{dt.fecexp}}</td>
+                <td>{{dt.detciuexp}}</td>
+                <td>{{dt.prinom}}</td>
+                <td>{{dt.segnom}}</td>
+                <td>{{dt.priape}}</td>
+                <td>{{dt.segape}}</td>
+                <td>{{dt.fecnac}}</td>
+                <td>{{dt.detciunac}}</td>
+                <td>{{dt.detpainac}}</td>
+                <td>{{dt.direccion}}</td>
+                <td>{{dt.detbar}}</td>
+                <td>{{dt.detciures}}</td>
+                <td>{{dt.detpaires}}</td>
+                <td>{{dt.detsex}}</td>
+                <td>{{dt.detciv}}</td>
+                <td>{{dt.detraz}}</td>
+                <td>{{dt.comfam}}</td>
+                <td>{{dt.numhij}}</td>
+                <td>{{dt.telefono}}</td>
+                <td>{{dt.celular}}</td>
+                <td>{{dt.email}}</td>
+                <td>{{dt.numlibmil}}</td>
+                <td>{{dt.clalibmil}}</td>
+                <td>{{dt.dislibmil}}</td>
+                <td>{{dt.detpro}}</td>
+                <td>{{dt.detgru}}</td>
+                <td>{{dt.detviv}}</td>
+                <td>{{dt.estrato}}</td>
+            </tr>
+        </tbody>
     </table>
-  </cdk-virtual-scroll-viewport>
-  </div>
-  <br>
-   -->
+</cdk-virtual-scroll-viewport>

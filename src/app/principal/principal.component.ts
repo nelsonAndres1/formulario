@@ -3,12 +3,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormularioService } from '../services/formulario.service';
+import { ReporteService } from '../services/reporte.service';
 import { Nomin02 } from '../models/nomin02';
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
   styleUrls: ['./principal.component.css'],
-  providers: [FormularioService]
+  providers: [FormularioService, ReporteService]
 })
 
 export class PrincipalComponent implements OnInit{
@@ -17,21 +18,18 @@ export class PrincipalComponent implements OnInit{
   
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  usuarios=[]
+  usuarios:any;
+  filterPost = '';
   constructor(
-   private _formularioService: FormularioService
-    
+   private _formularioService: FormularioService,
+  private _reporteService: ReporteService
   ) {
-    this._formularioService.consultaNomin440(new Nomin02('')).subscribe(
+    this._reporteService.reporte(new Nomin02('')).subscribe(
       response=>{
-        console.log("Respuesta de uusarios");
         console.log(response);
         this.usuarios=response;
-        console.log(this.usuarios);
-        console.log(this.usuarios);
       }
-    )
-   
+    );
   }
   ngOnInit(): void {
    
