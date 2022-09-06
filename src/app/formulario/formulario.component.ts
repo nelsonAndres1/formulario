@@ -135,6 +135,7 @@ export class FormularioComponent implements OnInit {
 		{ value: "AE", label: "AEROPUERTO" },
 		{ value: "AG", label: "AGRUPACIÓN" },
 		{ value: "AL", label: "ALTILLO" },
+		{ value: "BR", label: "BARRIO" },
 		{ value: "BL", label: "BULEVAR" },
 		{ value: "CU", label: "CÉLULA" },
 		{ value: "CE", label: "CENTRO COMERCIAL" },
@@ -161,8 +162,8 @@ export class FormularioComponent implements OnInit {
 		{ value: "RP", label: "ROUND POINT (GLORIETA)" },
 		{ value: "UL", label: "UNIDAD RESIDENCIAL" },
 		{ value: "UR", label: "URBANIZACIÓN" },
-		{ value: "ZN", label: "ZONA" },
-		{ value: "BR", label: "BARRIO" }
+		{ value: "ZN", label: "ZONA" }
+	
 	];
 
 	menum_tipviv = [
