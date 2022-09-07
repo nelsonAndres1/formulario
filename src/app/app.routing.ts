@@ -11,7 +11,7 @@ const appRoutes: Routes = [
     {path: 'logout/:sure', component:LoginComponent},
     {path: 'inicio-formulario', component:InicioFormularioComponent},
     {path: 'formulario', component: FormularioComponent},
-/*     {path: 'principal', component: PrincipalComponent}, */
+     {path: 'principal', component: PrincipalComponent}, 
     {path: '**', component: ErrorComponent}
 ];
 
