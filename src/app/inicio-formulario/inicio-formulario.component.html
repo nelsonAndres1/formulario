@@ -54,7 +54,7 @@
             <input class="form-control" id="exampleAccount" placeholder="Buscar Cedula ..." type="text"
                 (input)="getGener02($event)" autocomplete="off" required>
             <div class="col-sm-12">
-                <div class="card card-body mb-1" *ngFor="let result of data" (click)="getDatos(result)"
+                <div class="card card-body mb-1" *ngFor="let result of dataV" (click)="getDatos(result)"
                     style="cursor: pointer;">
                     <h4>Nombre {{result.prinom}} {{result.segnom}} {{result.priape}} {{result.segape}}</h4>
                     <small class="text-primary">

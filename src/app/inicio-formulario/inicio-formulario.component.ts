@@ -14,7 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class InicioFormularioComponent implements OnInit {
 
-  data: any;
+  data: any = [];
+  dataV:any = [];
   bandera: any;
   autorizo=true;
   constructor(private _formulario: FormularioService, private _nomin150service: Nomin150Service, private route: Router) { }
@@ -27,7 +28,11 @@ export class InicioFormularioComponent implements OnInit {
     const keyword = pclave.target.value;
     if (keyword.length > 0) {
       const search = this._formulario.searchGener02(keyword).then(response => {
+        
         this.data = response;
+        if(this.data.length<2){
+          this.dataV = response;
+        }
         console.log(this.data);
       })
     } else {
