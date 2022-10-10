@@ -182,7 +182,7 @@
                                         <label for="exampleAccount" for="email"><b>Correo Electronico Personal*</b></label>
                                         <input class="form-control" id="exampleAccount" name="email"
                                             placeholder="Correo Electronico" type="email" #email="ngModel"
-                                            [(ngModel)]="formulario.email" style="text-transform:uppercase;" required
+                                            [(ngModel)]="formulario.email" required
                                             pattern="[A-Za-z2-9._%+-]+@[A-Za-z2-9.-]+\.[A-Za-z]{2,4}$">
                                         <small *ngIf="!email.valid && email.touched" class="invalid-feedback d-block">
                                             Correo Invalido!
