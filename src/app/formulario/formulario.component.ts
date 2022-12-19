@@ -198,6 +198,7 @@ export class FormularioComponent implements OnInit {
 	grupoSanguineo: any;
 	barrios:any=[];
 	profesiones2: any;
+	bandera_excepcion: any;
 
 	constructor(private renderer: Renderer2, private _formulario: FormularioService, private _nomin150service: Nomin150Service, private route: Router) {
 		this.formulario = new Formulario('', '', '', '','', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, '', '', '', '','','','','','','','','','');
@@ -209,8 +210,10 @@ export class FormularioComponent implements OnInit {
 		this.formulario = this.datos;
 		this.datoDireccion = JSON.parse(localStorage.getItem('usuarioConsultado') + '');
 		this.formulario.direccion = '';
-
-		
+		this.bandera_excepcion = false;
+		if(this.formulario.docemp == '30730465'){
+			this.bandera_excepcion = true;
+		}
 		
 
 		//llamado tipos de documentos

@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <div class="container py-3" *ngIf="!banDire">
     <div class="row">
-        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+        <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" *ngIf="bandera_excepcion">
             <div>
                 <h1 class="text-center mb-3"> <img src="./assets/logo.png"> Formulario Actualización de Información</h1>
                 <br>
