@@ -9,8 +9,8 @@ const appRoutes: Routes = [
     { path: '', component: InicioFormularioComponent },
     //{path: 'login', component: LoginComponent}, 
     //{path: 'logout/:sure', component:LoginComponent},
-    { path: 'inicio-formulario', component: InicioFormularioComponent },
-    { path: 'formulario', component: FormularioComponent },
+/*     { path: 'inicio-formulario', component: InicioFormularioComponent },
+    { path: 'formulario', component: FormularioComponent }, */
     /* {path: 'datos_123', component: PrincipalComponent}, */
     { path: '**', component: ErrorComponent }
 ];
